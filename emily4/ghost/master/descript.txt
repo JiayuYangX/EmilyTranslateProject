@@ -5,6 +5,7 @@ type,ghost
 name,Emily/Phase4.5
 sakura.name,Emily
 kero.name,Teddy
+char2.name,Emilio
 
 balloon,emily4
 
@@ -26,6 +27,6 @@ sstp.allowunspecifiedsend,1
 icon,icon.ico
 icon.minimize,icon_minimize.ico
 
-shiori,libaya5.so
+shiori,yaya.dll
 shiori.version,SHIORI/3.0
 

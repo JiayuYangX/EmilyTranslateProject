@@ -2657,7 +2657,7 @@ OnGhostChangeCall_いもえみ
 	}
 	when EMS_GC_CHANGED {
 		if 'ねえさま' _in_ change_plain_talk {
-			"\p2\s[200]\u\s[10]\h\s[5]は～い、\w5おねえさん登場だよ～\w9\w9\u\s[11]…\w5…\w5どっちが姉なんだか。\w9\w9\p[2]\s[206]「\_a[http://imoutoane.com/]いもうと姉\_a」なんだよ、\w5きっと。\w9\w9\u\s[10]\n\n略して「芋姉」だね。\w9\nすごく正しいと思う。\w9\w9\h\s[7]\n\nな、\w5なんだと～～～！？\e"
+			"\p2\s[200]\u\s[10]\h\s[5]は～い、\w5おねえさん登場だよ～\w9\w9\u\s[11]…\w5…\w5どっちが姉なんだか。\w9\w9\p[2]\s[206]「\_a[https://web.archive.org/web/20100314063353/http://imoutoane.com:80/]いもうと姉\_a」なんだよ、\w5きっと。\w9\w9\u\s[10]\n\n略して「芋姉」だね。\w9\nすごく正しいと思う。\w9\w9\h\s[7]\n\nな、\w5なんだと～～～！？\e"
 		}
 	}
 	//when EMS_GC_CALLING {
@@ -2873,6 +2873,29 @@ OnGhostChangeCall_ラーシェ
 	//}
 }}END_CHANGE
 
+//-------------------------------------------------------------------------新2018.12./改----.--.--
+OnGhostChangeCall_ナナ
+{{START_CHANGE
+	//
+	when EMS_GC_CHANGING {
+		"\h\s[0]\u\s[10]あんまり失敗ばっかりだし、\w5そろそろ火魔法の修行に行ったらどうかな。\w9\nナナさんのところとか。\w9\w9\h\s[4]そうだよね…\w5…\w5。\w9\nこないだも火加減間違えて、\w5おいもさん炭にしちゃったし。\w9\w9\u\s[11]\n\n[half]…\w5…\w5そうだね、\w5とりあえずほかほかの焼き芋を魔法で作れるようになるところからだね。"
+	}
+	when EMS_GC_CHANGED {
+		if 'おいもパフェ' _in_ change_plain_talk {
+			"\u\s[10]\h\s[5]やった！\w5おいもパフェ！\w9\nいっしょに食べよ～！\w9\w9\u勝手に全部食べちゃったりしちゃだめだよ。\w9\w9\h\s[9]\n\n[half]し、しないからね！？"
+		}
+		elseif '火の魔法' _in_ change_plain_talk {
+			"\u\s[10]\h\s[28]ふふ～ん。\w9もちろん、\w5ボクのほうが先輩だよ？\w9\n大火魔法使いとしてみっちり教えてあげるからね？\w9\w9\u\s[11]どうやったら派手に失敗出来るかとか？\w9\w9\h\n\n[half]\s[9]ち、違うもん！\w9たまには成功するもん！\e"
+		}
+	}
+	//when EMS_GC_CALLING {
+	//}
+	//when EMS_GC_CALLED {
+	//}
+	//when EMS_GC_CLOSED {
+	//}
+}}END_CHANGE
+
 
 /*
 //-------------------------------------------------------------------------新2007.8./改----.--.--
@@ -2882,14 +2905,14 @@ OnGhostChangeCall_
 	when EMS_GC_CHANGING {
 	}
 	//when EMS_GC_CHANGED {
-		if '' _in_ change_plain_talk {
-		}
+	//	if '' _in_ change_plain_talk {
+	//	}
 	//}
-	when EMS_GC_CALLING {
-	}
+	//when EMS_GC_CALLING {
+	//}
 	//when EMS_GC_CALLED {
 	//}
-	when EMS_GC_CLOSED {
-	}
+	//when EMS_GC_CLOSED {
+	//}
 }}END_CHANGE
 */

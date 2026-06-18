@@ -1,4 +1,4 @@
-charset,Shift_JIS
+charset,UTF-8
 type,balloon
 name,Balloon for Emily/P4
 

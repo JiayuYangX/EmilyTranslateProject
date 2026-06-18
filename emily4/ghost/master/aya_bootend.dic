@@ -152,7 +152,7 @@ OnBoot_morning : array
 	{
 		OnBoot_TVTalk_Before('不在',61)
 		--
-		'\_a[http://www.nhk.or.jp/3kumi/]「さわやか三組」\_aって、\w5実はかなりの長寿番組だよな。\w9\w9\h\s[5]ただいま～。\w9\u\s[12]\n\n！！！！！\w9\nオ、\w5オ、\w5オ、\w5オカエリ！！'
+		'\_a[https://ja.wikipedia.org/wiki/%E3%81%95%E3%82%8F%E3%82%84%E3%81%8B3%E7%B5%84]「さわやか三組」\_aって、\w5実はかなりの長寿番組だよな。\w9\w9\h\s[5]ただいま～。\w9\u\s[12]\n\n！！！！！\w9\nオ、\w5オ、\w5オ、\w5オカエリ！！'
 		--
 		OnBoot_TVTalk_After('NHK教育の小学生番組')
 	}

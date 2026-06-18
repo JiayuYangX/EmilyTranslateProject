@@ -23,10 +23,6 @@ On_balloon_tooltip
 }
 
 //通常メニュー
-メニュー
-{
-	"\![*]\q[%(MenuItem(_argv[0])),%(_argv[1])]"
-}
 MenuItem
 {
 	if is_small_balloon {
@@ -525,21 +521,6 @@ Config_Menu
 	--
 
 	//////////////////////////////////////////////////////////////////
-	'\n\_l[4]' + E.CheckMark(config_always_on_top) + '\q['
-	--
-	_ninix_hint =""
-	if 'linux' _in_ OSType{
-		_ninix_hint ="，需重启"
-	}
-	--
-	if config_always_on_top {
-		"%(MenuItem('［　　ＯＮ］总是置顶'+_ninix_hint)),CONFIG_ALWAYSONTOP]"
-	}
-	else {
-		"%(MenuItem('［　ＯＦＦ］总是置顶'+_ninix_hint)),CONFIG_ALWAYSONTOP]"
-	}
-	--
-	//////////////////////////////////////////////////////////////////
 	'\n\_l[4]' + E.CheckMark(aitalkinterval) + '\q['
 	--
 	MenuItem("［%(Config_AITalk_Interval_Disp)］自主聊天频率") + ',CONFIG_TALKINTERVAL]'
@@ -647,39 +628,7 @@ ShowHideNewbiesInfo
 		'\p[4]\s[-1]'
 	}
 }
-//============总是置顶============================================================================
 
-ToolTip_CONFIG_ALWAYSONTOP
-{
-	'让当前人格一直处于其他窗口上方。'
-}
-
-OnChoiceSelect_CONFIG_ALWAYSONTOP
-{
-	--
-	if !config_always_on_top {
-	config_always_on_top = 1
-	"\u\s[10]\h\s[5]收到，最前排确认～。"
-	}
-	else {
-	config_always_on_top = 0
-	"\u\s[10]\h\s[4]好的…"
-	}
-	--
-	SetAlwaysOnTop(config_always_on_top)
-	--
-	Config_Menu
-}
-
-SetAlwaysOnTop
-{
-	if _argv[0] {
-		'\![set,windowstate,stayontop]'
-	}
-	else{
-		'\![set,windowstate,!stayontop]'
-	}
-}
 //============喋り頻度============================================================================
 ConfigTalkInterval
 {

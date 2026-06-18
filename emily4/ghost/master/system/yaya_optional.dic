@@ -3,9 +3,6 @@
 //オプション関数
 //******************************************************************************
 
-#define	C_CRLF2			CHR(0xd,0xa,0xd,0xa)			/* 改行コードx2   */
-#define	C_CRLF			CHR(0xd,0xa)					/* 改行コード     */
-#define	C_BYTE1			CHR(0x1)						/* バイト値1      */
 #define	ESCAPE_TAG_1	CHR(0x3,0x3)
 #define	ESCAPE_TAG_2	CHR(0x4,0x4)
 
@@ -77,7 +74,7 @@ SHIORI3FW.TranslateSystemChar
 		_c = _argv[1]
 	}
 	_text = TOSTR(_argv[0])
-	_text = RE_REPLACE(_text,"[ !%(CHR(0x22))%(CHR(0x25))#$&()*+,\-/:;<=>?@\[\]`{|}‾]",_c)
+	_text = RE_REPLACE(_text,"[ !%(CHR(0x22))%(CHR(0x25))#$&()*+,\-/:;<=>?@\[\]`{|}~]",_c)
 	_text
 }
 
@@ -139,7 +136,7 @@ id|name|keroname|hwnd|kerohwnd|path|ghostpath,
 //------------------------------------------------------------------------------
 SHIORI3FW.RefreshFMOTable : void
 {
-	_fmoname=TOSTR(argv[0])
+	_fmoname=TOSTR(_argv[0])
 	if _fmoname == '' {
 		_fmoname='Sakura'
 	}
@@ -257,12 +254,9 @@ SHIORI3FW.MakeLongText
 		return
 	}
 	
-	_space = '　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　'
-	_menuitem += SUBSTR(_space,0,_len / 2)
+	_space = '                                                                                    '
+	_menuitem += SUBSTR(_space,0,_len)
 	
-	if _len % 2 > 0 {
-		_menuitem += " "
-	}
 	_menuitem
 }
 

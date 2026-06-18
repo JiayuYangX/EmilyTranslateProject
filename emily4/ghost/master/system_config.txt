@@ -1,11 +1,11 @@
 //------------------------------------------------------------------------------
 //システム辞書
 //------------------------------------------------------------------------------
-dic, yaya_config.txt							// YAYA:設定辞書。必ず最初に指定すること。
+dic, yaya_config.txt		// YAYA:設定辞書。必ず最初に指定すること。
 
-dic, system/yaya_shiori3.dic, UTF-8			// YAYA:システム辞書
-dic, system/yaya_optional.dic, UTF-8		// YAYA:オプション機能群用辞書
-//dic, system/yaya_compatible.dic, UTF-8	// YAYA:AYA過去互換用辞書
+dic, system/yaya_shiori3.dic, UTF-8
+dic, system/yaya_optional.dic, UTF-8
+//dic, system/yaya_compatible.dic, UTF-8
 
 //------------------------------------------------------------------------------
 //実行ログ

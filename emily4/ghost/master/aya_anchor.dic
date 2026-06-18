@@ -3,7 +3,7 @@
 OnAnchorSelect
 {
 	_data = reference[0]
-	if ( SUBSTR(_data,0,7) == 'http://' ) {
+	if ( (SUBSTR(_data,0,7) == 'http://') || (SUBSTR(_data,0,8) == 'https://') ) {
 		"\C\![set,choicetimeout,-1]\![set,balloontimeout,-1]\j[%(reference[0])]"
 	}
 	elseif ( SUBSTR(_data,0,7) == 'script:' ) {
@@ -34,19 +34,17 @@ OnAnchorSelect
 -----------------------------------------------------------*/
 TranslateAnchor
 {
-	_wl = AnchorWordList
-	
 	//大括弧＝タグパラメータの内側とエスケープ部分は無視
 	//このへんほんとはちゃんと解析しないと……
-	_resarr = RE_SPLIT(_argv[0],'(\\_*[0-9a-z!?]\[.+?\]|\\_[?!].+?\\_[?!])')
+	_resarr = RE_SPLIT(_argv[0],'(\\_[?!a].+?\\_[?!a])|\\_*[0-9a-z!?]\[.+?\]')
 	_restok = RE_GETSTR
 	
 	_n = ARRAYSIZE(_resarr)
-	_m = ARRAYSIZE(_wl)
+	_m = ARRAYSIZE(AnchorWordList)
 	_x = ARRAYSIZE(AnchorWordURLList)
 	for _i = 0 ; _i < _n ; _i++ {
 		for _j = 0 ; _j < _m ; _j++ {
-			_resarr[_i] = REPLACE(_resarr[_i],_wl[_j],'\_a[OnAnchorWordExec,' + _wl[_j] + ']' + _wl[_j] + '\_a')
+			_resarr[_i] = REPLACE(_resarr[_i],AnchorWordList[_j],'\_a[OnAnchorWordExec,' + AnchorWordList[_j] + ']' + AnchorWordList[_j] + '\_a')
 		}
 		for _j = 0 ; _j < _x ; _j++ {
 			_resarr[_i] = REPLACE(_resarr[_i],AnchorWordURLList[_j],"\_a[%(AnchorWordURLListContent[_j])]%(AnchorWordURLList[_j])\_a")
@@ -155,7 +153,7 @@ OnAnchorWordReturn
 	//参照URL
 	'TortoiseSVN | http://tortoisesvn.net/'
 	'IPMessenger | http://www.ipmsg.org/'
-	'YAYA | http://code.google.com/p/yaya-shiori/'
+	'YAYA | https://github.com/ponapalt/yaya-shiori/wiki'
 	'SSP BUGTRAQ | http://ssp.shillest.net/'
 	
 }

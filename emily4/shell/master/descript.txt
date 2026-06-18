@@ -1,3 +1,5 @@
+charset,UTF-8
+
 craftman,FA-X
 name,Phase4.5[新]
 type,shell

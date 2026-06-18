@@ -35,28 +35,25 @@ On_sakura.portalsites_EX : array
 {
 	'SSP BUGTRAQ				| http://ssp.shillest.net/								| '
 	'CROW						| http://crow.aqrs.jp/									| '
-	'S Software					| http://www.s-software.net/							| '
-	'Usada Sakura				| http://usada.sakura.vg/								| '
+//	'S Software					| http://www.s-software.net/							| '
+//	'Usada Sakura				| http://usada.sakura.vg/								| '
 	'偽林檎						| http://ccm.sherry.jp/									| '
-	'ninix-aya					| http://ninix-aya.sourceforge.jp/						| '
+	'ninix-aya					| http://ninix-aya.osdn.jp/								| '
 	'-							|														| '
-	'Ghost Center			| http://ngc.aqrs.jp/									| '
+	'Ghost Center			    | http://ngc.aqrs.jp/									| '
 	'GHOST TOWN					| http://ghosttown.mikage.jp/							| '
-	'-							|														| '
-	'うわひょ改					| http://review.sakura.ne.jp/							| '
-	'tukatter					| http://tukatter.shillest.net/							| '
 	'-							|														| '
 	'Yet Another AYA			| http://ms.shillest.net/yaya.xhtml						| '
 	'華和梨(KAWARI)				| http://kawari.sourceforge.net/						| '
 	'里々(SATORI)改造版			| http://ms.shillest.net/satoriya.xhtml					| '
 	'なゆきwith里珠				| http://nayuki.sherry.jp/								| '
-	'透理						| http://pleco.is.land.to/								| '
+	'灯							| http://le.silk.to/									| '
 	'-							|														| '
 	'浮子屋本舗					| http://ukiya.sakura.ne.jp/							| '
 	"SSTP-Viewer's STREET		| http://sakura.nanika.jp/sstpviewer/					| "
 	'-							|														| '
 	'SSTP BOTTLE				| http://bottle.mikage.to/								| '
-	'極秘生産拠点「ぐんにょり」	| http://k-a2shi.hp.infoseek.co.jp/ukagaka/				| '
+//	'極秘生産拠点「ぐんにょり」	| http://k-a2shi.hp.infoseek.co.jp/ukagaka/				| '
 	'-							|														| '
 	'葦野 香さん				|														| '
 	'ししゃも屋さん				|														| '
@@ -194,27 +191,5 @@ On_vanishbutton.caption
 On_useorigin1
 {
 	'0'
-}
-
-//---- SHIORI 関連情報 ------------------------------------------------------------------
-On_version
-{
-	EMInitMenuFileName //ここで本格初期化
-	GETSETTING('coreinfo.version')
-}
-
-On_craftman
-{
-	GETSETTING('coreinfo.author')
-}
-
-On_craftmanw
-{
-	GETSETTING('coreinfo.author')
-}
-
-On_name
-{
-	GETSETTING('coreinfo.name')
 }
 

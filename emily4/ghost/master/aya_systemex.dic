@@ -614,8 +614,6 @@ E.BootInitScriptBegin
 		'\0\![set,alignmenttodesktop,bottom]\1\![set,alignmenttodesktop,bottom]\p2\![set,alignmenttodesktop,bottom]\p3\![set,alignmenttodesktop,bottom]\0'
 	}
 	--
-	SetAlwaysOnTop(config_always_on_top)
-	--
 	BatteryTrayIconInit
 }
 
@@ -773,7 +771,7 @@ E.IsCharExist
 //---- タイトル表示 -------------------------------------------
 E.Title
 {
-	"\h\_q\f[bold,true]■ %(_argv[0]) ■\f[default]\n\_q"
+	"\h\_q\f[bold,true]■\_?%(_argv[0])\_?■\f[default]\n\_q"
 }
 
 //---- 読み込み/終了 ------------------------------------------------------------------------

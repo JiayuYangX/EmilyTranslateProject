@@ -46,7 +46,6 @@ Mouse_Nade0Bust : nonoverlap
 		parallel Emily_universal
 	}
 	else {
-
 		"\t\1\s[10]\0\s[2]嘿呀！！\w9\s[9]\n这 \w5这个！\w9\n手往哪伸呢！\w9\w9\1…\w5…\w5已经伸到乳沟里了吗？\e"
 
 		"\u\s[10]\p2\s[200]\h\s[7]胸罩都摸歪了啦！！\w9\w9\u你有穿？\w9\w9\h\s[1]\n\n我穿了啊\w5…\w5…\w5的确发育了嘛 \w5…\w5…\w9\w9\p2\s[218]被这样摸一下就歪了的话,\w5一般是因为虚报罩杯。 \_a[GHOST_舞子]舞子姐姐\_a说的哦。\w9\w9\h\s[4]\n\n…\w5…\w5呣～\w5…\w5…\e"
