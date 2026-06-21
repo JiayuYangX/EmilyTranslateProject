@@ -4,7 +4,7 @@
 On_balloon_tooltip
 {
 	if SUBSTR(reference[1],0,7) == 'http://' {
-		"在浏览器中打开网址 : " + reference[1]
+		"URLをブラウザで開く : " + reference[1]
 	}
 	
 	_r0 = RE_REPLACE(reference[0],'[ 　]+$','')
@@ -47,7 +47,7 @@ MenuItemHalf
 
 DispReturnCommand
 {
-	"\h\n[140]\![#]\q[返回,%(_argv[0])]　\![X]\q[关闭,CANCEL_NOTALK]"
+	"\h\n[140]\![#]\q[もどる,%(_argv[0])]　\![X]\q[閉じる,CANCEL_NOTALK]"
 }
 
 //**** メインメニューの展開 *************************************************************
@@ -60,11 +60,11 @@ OpenMenu
 	"\b[2]"
 	--
 	if sender != basewarename {
-		"\s[5]好的～好的～\w5什么事呀？"
+		"\s[5]ほいほい、\w5何かな？"
 	}
 	else {
-		"\s[5]怎么了？"
-		"\s[0]唔\w5打开菜单呢。"
+		"\s[5]どうしたのかな？"
+		"\s[0]ん、\w5メニューね。"
 	}
 	--
 	DispMainMenu(0)
@@ -85,7 +85,7 @@ OnChoiceSelect_MAINMENU
 	--
 	"\b[2]"
 	--
-	"返回了哦。"
+	"戻ったよ。"
 	--
 	DispMainMenu(1)
 }
@@ -110,21 +110,21 @@ MainMenuArray
 {
 	_arr = IARRAY
 	
-	_arr ,= "人格对话,AITALK"
+	_arr ,= "なんか話して,AITALK"
 
 	if ARRAYSIZE(lasttalk) {
-		_arr ,= "刚刚说了什么,LASTTALK"
+		_arr ,= "さっき何て言ったの,LASTTALK"
 	}
 
 	_arr ,= '-'
 
-	_arr ,= "再做一次自我介绍,INTRODUCE"
-	_arr ,= "提问题,QUESTION"
-	_arr ,= "帮帮我Help Me~,HELP"
+	_arr ,= "自己紹介しなおして,INTRODUCE"
+	_arr ,= "質問コーナー,QUESTION"
+	_arr ,= "おたすけへるぷみぃ,HELP"
 
 	_arr ,= '-'
 
-	_arr ,= "设置艾米莉,CONFIG"
+	_arr ,= "Emilyにおねがい,CONFIG"
 
 	_time1 = FATTRIB('../../updates2.dau')[10]
 	_time2 = FATTRIB('../../.svn/entries')[10]
@@ -134,17 +134,17 @@ MainMenuArray
 	_time1 = GETTIME(_time1)
 	_date = STRFORM("$04d/$02d/$02d $02d:$02d",_time1[0],_time1[1],_time1[2],_time1[4],_time1[5])
 	
-	_arr ,= "网络更新 %(_date),UPDATE"
+	_arr ,= "ネットワーク更新 %(_date),UPDATE"
 
 	if E.IsPluginInstalled('379E0DA0-131C-11DD-E1AC-90009E101CFE') {
-		_arr ,= "邮票簿,STAMP"
+		_arr ,= "スタンプぽん,STAMP"
 	}
 
 	_arr ,= '-'
 
-	_arr ,= "人格排名,RATEOFUSE"
-	_arr ,= "最爱的人格,FAV"
-	_arr ,= "快捷菜单,SWISSARMY"
+	_arr ,= "ゴーストランキング,RATEOFUSE"
+	_arr ,= "お気に入りゴースト,FAV"
+	_arr ,= "お役立ちメニュー,SWISSARMY"
 
 	_arr
 }
@@ -168,10 +168,10 @@ DispMainMenu
 	_tx
 	--
 	if _argv[0] {
-		"\n\n\![X]\q[%(MenuItem('关闭')),CANCEL_NOTALK]\_q\e"
+		"\n\n\![X]\q[%(MenuItem('閉じる')),CANCEL_NOTALK]\_q\e"
 	}
 	else {
-		"\n\n\![X]\q[%(MenuItem('没什么事')),CANCEL]\_q\e"
+		"\n\n\![X]\q[%(MenuItem('なんでもない')),CANCEL]\_q\e"
 	}
 	
 	_ver = GETSETTING(0)
@@ -182,7 +182,7 @@ DispMainMenu
 OnChoiceSelect_CANCEL
 {
 	//---- キャンセルされた
-	"\u\s[10]\h\s[4]哎呀哎呀。\w9\s[0]\n一会儿想用的时候再叫我昂。\e"
+	"\u\s[10]\h\s[4]ありゃりゃ。\w9\s[0]\nまた用があったら呼んでね。\e"
 }
 
 OnChoiceSelect_CANCEL_NOTALK
@@ -193,7 +193,7 @@ OnChoiceSelect_CANCEL_NOTALK
 //============なにかしゃべって=================================================================================
 ToolTip_AITALK
 {
-	"跟大家一起聊天。"
+	"みんなでおしゃべりします。"
 }
 
 OnChoiceSelect_AITALK
@@ -204,7 +204,7 @@ OnChoiceSelect_AITALK
 //============ネットワーク更新=================================================================================
 ToolTip_UPDATE
 {
-	"艾米莉更新了。右边是最后的更新日期。"
+	"Emilyを最新版に更新します。右側は最終更新日付です。"
 }
 
 OnChoiceSelect_UPDATE
@@ -215,74 +215,74 @@ OnChoiceSelect_UPDATE
 //============ヘルプ=================================================================================
 ToolTip_HELP
 {
-	"这就是所谓的帮助提示。"
+	"いわゆるヘルプやTipsです。"
 }
 
 OnChoiceSelect_HELP
 {
-	E.Title('菜单：帮助')
+	E.Title('メニュー：ヘルプ')
 	--
-	"\t\h\s[5]%(charname(0))酱的咨询室～！\w9\w9\u\s[11]虽然我认为叫做常规帮助比较好。\h\n[50]\_q"
+	"\t\h\s[5]%(charname(0))ちゃんのなんでも相談室～！\w9\w9\u\s[11]普通にヘルプって言ったほうがいいと思うけど。\h\n[50]\_q"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('打开使用手册')),HELP_SYSTEM]"
+	"\n\_l[4]\![*]\q[%(MenuItem('使い方の説明書を開いて')),HELP_SYSTEM]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('我想做各种各样的设置')),HELP_CONFIG]"
+	"\n\_l[4]\![*]\q[%(MenuItem('いろいろ設定したいんだけど')),HELP_CONFIG]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('我还想知道更多设置')),HELP_CONFIG2]"
+	"\n\_l[4]\![*]\q[%(MenuItem('設定の方法がいまいちわからない')),HELP_CONFIG2]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('电池——如何显示电源状态')),HELP_BATT]"
+	"\n\_l[4]\![*]\q[%(MenuItem('バッテリー状態表示について')),HELP_BATT]"
 	--
 	DispReturnCommand('MAINMENU')
 }
 
 ToolTip_HELP_SYSTEM
 {
-	'打开SSP自带操作说明。'
+	'SSP添付の本体操作用ヘルプを開きます。'
 }
 
 OnChoiceSelect_HELP_SYSTEM
 {
-	E.Title('菜单：帮助/说明书')
+	E.Title('メニュー：ヘルプ/説明書')
 	--
-	"\t\u\s[10]\h\s[27]\![open,help]嗯~~ \w5说明书呢。\w9\n我想也许就是这个了吧。\w9\w9\u\s[11]…\w5…\w5大概 \w5吧。\w9\n所以通常SSP指南就是这样命名的。"
+	"\t\u\s[10]\h\s[27]\![open,help]え～っと、\w5説明書ね。\w9\nたぶんこれだと思うけど。\w9\w9\u\s[11]…\w5…\w5たぶん、\w5って。\w9\nそれでよくSSPナビゲータを名乗れたもんだね。"
 	--
 	DispReturnCommand('HELP')
 }
 
 ToolTip_HELP_CONFIG
 {
-	'SSP对话框设置的“反向解析”说明。'
+	'SSP本体設定ダイアログの「逆引き」説明です。'
 }
 
 OnChoiceSelect_HELP_CONFIG
 {
-	E.Title('菜单：帮助/设置')
+	E.Title('メニュー：ヘルプ/設定')
 	--
-	"\t\u\s[10]\h\s[5]目前，\w5可以做的事都在这了。\w9\w9\u更多的设置，\w5在右键菜单里哦。\_q\h\n[50]"
+	"\t\u\s[10]\h\s[5]とりあえず、\w5できることはこんな感じかな。\w9\w9\uもっといろいろ設定したいときは、\w5僕らを右クリックするといいと思うよ。\_q\h\n[50]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('我想改变说话的频率')),OnChoiceSelectEx_HelpConfig,talk]"
+	"\n\_l[4]\![*]\q[%(MenuItem('喋るスピードを変えたい')),OnChoiceSelectEx_HelpConfig,talk]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('我想半透明显示')),OnChoiceSelectEx_HelpConfig,display]"
+	"\n\_l[4]\![*]\q[%(MenuItem('半透明表示にしたい')),OnChoiceSelectEx_HelpConfig,display]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('我想改变你对我的称呼')),OnChoiceSelectEx_HelpConfig,setup]"
+	"\n\_l[4]\![*]\q[%(MenuItem('私の呼び方を変えてほしい')),OnChoiceSelectEx_HelpConfig,setup]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('设置收发邮件功能')),OnChoiceSelectEx_HelpConfig,biff]"
+	"\n\_l[4]\![*]\q[%(MenuItem('メールチェック機能の設定')),OnChoiceSelectEx_HelpConfig,biff]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('设置默认的浏览器和邮件程序')),OnChoiceSelectEx_HelpConfig,application]"
+	"\n\_l[4]\![*]\q[%(MenuItem('使うブラウザやメールソフトの設定')),OnChoiceSelectEx_HelpConfig,application]"
 	--
 	DispReturnCommand('HELP')
 }
 
 ToolTip_HELP_CONFIG2
 {
-	'SSP设置中的“帮助”菜单。'
+	'SSP設定ダイアログの「ヘルプのヘルプ」です。'
 }
 
 OnChoiceSelect_HELP_CONFIG2
 {
-	E.Title('菜单：帮助/设置')
+	E.Title('メニュー：ヘルプ/設定')
 	--
-	"\u\s[10]\h\s[27]额。\w9\n\_b[img/help_hatena.png,inline,opaque] \_b[img/help_help.png,inline,opaque] 按下这个按钮，\w9\n\_b[img/help_cursor.png,inline,opaque] こんなマークになったところで知りたい場所をクリックすると。\w9\w9\n\s[5]なんとボクたちが説明しちゃいます！\w9\w9\u\s[11]なんと、って言うほどのこと？"
+	"\u\s[10]\h\s[27]えーっと。\w9\n\_b[img/help_hatena.png,inline,opaque] \_b[img/help_help.png,inline,opaque] こんなボタンを押して、\w9\n\_b[img/help_cursor.png,inline,opaque] こんなマークになったところで知りたい場所をクリックすると。\w9\w9\n\s[5]なんとボクたちが説明しちゃいます！\w9\w9\u\s[11]なんと、って言うほどのこと？"
 	--
 	DispReturnCommand('HELP')
 }
@@ -294,7 +294,7 @@ ToolTip_OnChoiceSelectEx_HelpConfig
 
 OnChoiceSelectEx_HelpConfig
 {
-	E.Title('菜单：帮助/设置')
+	E.Title('メニュー：ヘルプ/設定')
 	--
 	"\u\s[10]\h\s[27]\![open,config,%(reference[0])]え～っと、\w5たぶんこのへんにあると思うんだけど\w5…\w5…\w9\w9\u\s[11]そんな頼りないこと言ってちゃだめだよ。\h"
 	--
@@ -351,11 +351,11 @@ OnChoiceSelect_LASTTALK
 		'\h\b[2]'
 	}
 	--
-	E.Title('菜单：刚刚说了什么')
+	E.Title('メニュー：さっき何て言ったの')
 	--
-	'\u\s[10]\h\s[27]嗯\w5…\w5…\w9'
-	'\u\s[10]\h\s[6]最近说的话都回忆出来了。\w9\w9\u\s[11]…\w5…\w5要忘掉都是个问题。'
-	'\u\s[10]\h\s[5]重播♪\w5重播♪\w9\w9\u\s[11]…\w5…\w5艾米莉你几岁了？'
+	'\u\s[10]\h\s[27]えーと\w5…\w5…\w9'
+	'\u\s[10]\h\s[6]最近言ったことを思い出すとかできます。\w9\w9\u\s[11]…\w5…\w5忘れる方が問題だって。'
+	'\u\s[10]\h\s[5]プレイバック♪\w5プレイバック♪\w9\w9\u\s[11]…\w5…\w5エミリって何歳？'
 	--
 	'\h\n[50]\_q'
 	--
@@ -382,11 +382,11 @@ IntroduceMenu
 {
 	'\_q\t'
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('关于艾米莉')),INTRODUCE_EMILY]"
+	"\n\_l[4]\![*]\q[%(MenuItem('エミリについて')),INTRODUCE_EMILY]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('关于泰迪')),INTRODUCE_TEDDY]"
+	"\n\_l[4]\![*]\q[%(MenuItem('テディについて')),INTRODUCE_TEDDY]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('关于艾米利欧')),INTRODUCE_EMILIO]"
+	"\n\_l[4]\![*]\q[%(MenuItem('エミリオについて')),INTRODUCE_EMILIO]"
 	--
 	if RAND(3) == 0 {
 		"\n\_l[4]\![*]\q[%(MenuItem('？？？？？')),INTRODUCE_NAZO]"
@@ -399,23 +399,23 @@ IntroduceMenu
 
 ToolTip_INTRODUCE
 {
-	"大家的自我介绍。"
+	"みんなの自己紹介です。"
 }
 
 OnChoiceSelect_INTRODUCE
 {
-	E.Title('菜单：自我介绍')
+	E.Title('メニュー：自己紹介')
 	--
-	"\p2\s[204]\u\s[10]\h\s[5]我们做自我介绍的角落！！\n[50]\w9\w9\u什么时候有这个角落了。\w9\w9\p2（因为不擅长啊\w5…\w5…）\h"
+	"\p2\s[204]\u\s[10]\h\s[5]みんなの自己紹介のコーナー！！\n[50]\w9\w9\uいつからコーナーになったっけ。\w9\w9\p2（こういうの苦手だって\w5…\w5…）\h"
 	--
 	IntroduceMenu
 }
 
 OnChoiceSelect_INTRODUCE_RETURN
 {
-	E.Title('菜单：自我介绍')
+	E.Title('メニュー：自己紹介')
 	--
-	"\p2\s[200]\u\s[10]\h\s[5]返回上一页了哟。\n[50]"
+	"\p2\s[200]\u\s[10]\h\s[5]戻ったよ。\n[50]"
 	--
 	IntroduceMenu
 }
@@ -474,22 +474,22 @@ ToolTip_CONFIG
 
 OnChoiceSelect_CONFIG
 {
-	E.Title('菜单：设置')
+	E.Title('メニュー：設定')
 	--
-	"\u\s[10]\h\s[4]总觉得不太懂这些设置诶。\n[50]\w9\w9\u\s[11]…\w5…\w5…\w9"
+	"\u\s[10]\h\s[4]なんだかわからないけど設定。\n[50]\w9\w9\u\s[11]…\w5…\w5…\w9"
 	--
 	Config_Menu
 }
 
 Config_Disp
 {
-	E.Title('菜单：设置')
+	E.Title('メニュー：設定')
 	--
 	if _argc {
 		REPLACE(_argv[0],'\e','')
 	}
 	else {
-		"\u\s[10]\h\s[5]修改完成～。"
+		"\u\s[10]\h\s[5]変更完了～。"
 	}
 	--
 	Config_Menu
@@ -523,17 +523,17 @@ Config_Menu
 	//////////////////////////////////////////////////////////////////
 	'\n\_l[4]' + E.CheckMark(aitalkinterval) + '\q['
 	--
-	MenuItem("［%(Config_AITalk_Interval_Disp)］自主聊天频率") + ',CONFIG_TALKINTERVAL]'
+	MenuItem("［%(Config_AITalk_Interval_Disp)］勝手にしゃべる頻度") + ',CONFIG_TALKINTERVAL]'
 	--
 
 	//////////////////////////////////////////////////////////////////
 	'\n\_l[4]' + E.CheckMark(config_disp_emilio) + '\q['
 	--
 	if config_disp_emilio {
-		"%(MenuItem('［　　ＯＮ］总是显示艾米利欧')),CONFIG_EMILIO]"
+		"%(MenuItem('［　　ＯＮ］エミリオを常に表示')),CONFIG_EMILIO]"
 	}
 	else {
-		"%(MenuItem('［　ＯＦＦ］总是显示艾米利欧')),CONFIG_EMILIO]"
+		"%(MenuItem('［　ＯＦＦ］エミリオを常に表示')),CONFIG_EMILIO]"
 	}
 	--
 	
@@ -542,10 +542,10 @@ Config_Menu
 		'\n\_l[4]' + E.CheckMark(! config_newbies_info_disable) + '\q['
 		--
 		if ! config_newbies_info_disable {
-			"%(MenuItem('［　　ＯＮ］显示“新手指导”')),CONFIG_NEWBIES]"
+			"%(MenuItem('［　　ＯＮ］「はじめてのひとへ」を表示')),CONFIG_NEWBIES]"
 		}
 		else {
-			"%(MenuItem('［　ＯＦＦ］显示“新手指导”')),CONFIG_NEWBIES]"
+			"%(MenuItem('［　ＯＦＦ］「はじめてのひとへ」を表示')),CONFIG_NEWBIES]"
 		}
 	}
 	--
@@ -554,10 +554,10 @@ Config_Menu
 	'\n\_l[4]' + E.CheckMark(! config_ghostclose_event_disable) + '\q['
 	--
 	if ! config_ghostclose_event_disable {
-		"%(MenuItem('［　　ＯＮ］关闭其他人格时做出反应')),CONFIG_GHOSTCLOSE]"
+		"%(MenuItem('［　　ＯＮ］ゴースト終了時に反応する')),CONFIG_GHOSTCLOSE]"
 	}
 	else {
-		"%(MenuItem('［　ＯＦＦ］关闭其他人格时做出反应')),CONFIG_GHOSTCLOSE]"
+		"%(MenuItem('［　ＯＦＦ］ゴースト終了時に反応する')),CONFIG_GHOSTCLOSE]"
 	}
 	--
 	
@@ -565,10 +565,10 @@ Config_Menu
 	'\n\_l[4]' + E.CheckMark(! disable_battery_notify) + '\q['
 	--
 	if ! disable_battery_notify {
-		"%(MenuItem('［　　ＯＮ］显示电池状态')),CONFIG_BATTERY]"
+		"%(MenuItem('［　　ＯＮ］バッテリー状態を表示')),CONFIG_BATTERY]"
 	}
 	else {
-		"%(MenuItem('［　ＯＦＦ］显示电池状态')),CONFIG_BATTERY]"
+		"%(MenuItem('［　ＯＦＦ］バッテリー状態を表示')),CONFIG_BATTERY]"
 	}
 	--
 	
@@ -576,21 +576,21 @@ Config_Menu
 	'\n\_l[4]' + E.CheckMark(! disable_surface_restore) + '\q['
 	--
 	if ! disable_surface_restore {
-		"%(MenuItem('［　　ＯＮ］允许对话时重置表情')),CONFIG_SURFACERESTORE]"
+		"%(MenuItem('［　　ＯＮ］表情復旧トークを有効')),CONFIG_SURFACERESTORE]"
 	}
 	else {
-		"%(MenuItem('［　ＯＦＦ］允许对话时重置表情')),CONFIG_SURFACERESTORE]"
+		"%(MenuItem('［　ＯＦＦ］表情復旧トークを有効')),CONFIG_SURFACERESTORE]"
 	}
 	--
 	
 	//////////////////////////////////////////////////////////////////
-	_menutext = '［' + HAN2ZEN(STRFORM('$4d',TOINT(news_talk_flag)),'number,symbol') + '］时事桥段计数器重置'
+	_menutext = '［' + HAN2ZEN(STRFORM('$4d',TOINT(news_talk_flag)),'number,symbol') + '］時事ネタカウンタリセット'
 	
 	'\n\_l[4]' + E.CheckMark(news_talk_flag) + '\q[' + MenuItem(_menutext) + ',CONFIG_RESET_NEWS]'
 	--
 	
 	//////////////////////////////////////////////////////////////////
-	_menutext = '［' + HAN2ZEN(STRFORM('$4d',ARRAYSIZE(lasttalksummary)),'number,symbol') + '］脚本日志重置'
+	_menutext = '［' + HAN2ZEN(STRFORM('$4d',ARRAYSIZE(lasttalksummary)),'number,symbol') + '］スクリプトログリセット'
 
 	'\n\_l[4]' + E.CheckMark(ARRAYSIZE(lasttalksummary)) + '\q[' + MenuItem(_menutext) + ',CONFIG_RESET_LOG]'
 	--
@@ -602,7 +602,7 @@ Config_Menu
 //============黒板============================================================================
 ToolTip_CONFIG_NEWBIES
 {
-	'“新人”的操作说明黒板的显示设置。'
+	'「はじめてのひとへ」の操作説明が書かれた黒板の表示設定です。'
 }
 
 OnChoiceSelect_CONFIG_NEWBIES
@@ -632,23 +632,23 @@ ShowHideNewbiesInfo
 //============喋り頻度============================================================================
 ConfigTalkInterval
 {
-	E.Title("菜单：设置-对话频率［%(Config_AITalk_Interval_Disp)］")
+	E.Title("メニュー：設定-喋り頻度［%(Config_AITalk_Interval_Disp)］")
 	--
 	//---- トーク頻度の調整
 	"%(_argv[0])\_q\h\n[50]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('机关枪(15秒间隔)')),CONFIG_TALKMAXHEART]"
+	"\n\_l[4]\![*]\q[%(MenuItem('マシンガン(15秒ごと)')),CONFIG_TALKMAXHEART]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('很吵(1分间隔)')),CONFIG_TALKMAX]"
+	"\n\_l[4]\![*]\q[%(MenuItem('やかましい(1分ごと)')),CONFIG_TALKMAX]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('正常(2分间隔)')),CONFIG_TALKNORMAL]"
+	"\n\_l[4]\![*]\q[%(MenuItem('ふつう(2分ごと)')),CONFIG_TALKNORMAL]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('安静(5分间隔)')),CONFIG_TALKPOOR]"
+	"\n\_l[4]\![*]\q[%(MenuItem('静か(5分ごと)')),CONFIG_TALKPOOR]"
 	--
-	"\n\_l[4]\![*]\q[%(MenuItem('不许说话')),CONFIG_TALKNONE]"
+	"\n\_l[4]\![*]\q[%(MenuItem('黙ってて')),CONFIG_TALKNONE]"
 	--
 	if basewarename == 'SSP' {
-		"\n\_l[4]\![*]\q[%(MenuItem('偏好设置')),CONFIG_TALKCUSTOM]"
+		"\n\_l[4]\![*]\q[%(MenuItem('おこのみ設定')),CONFIG_TALKCUSTOM]"
 	}
 	--
 	DispReturnCommand('CONFIG')
@@ -656,40 +656,40 @@ ConfigTalkInterval
 
 ToolTip_CONFIG_TALKINTERVAL
 {
-	'艾米莉自动聊天的频率设置。'
+	'エミリたちが勝手にとりとめのないことを喋る頻度です。'
 }
 
 OnChoiceSelect_CONFIG_TALKINTERVAL
 {
-	ConfigTalkInterval("\0\s[0]大概要少才合适呢？")
+	ConfigTalkInterval("\0\s[0]どのくらいがいいのかな？")
 }
 
 OnChoiceSelect_CONFIG_TALKMAXHEART
 {
 	//---- マシンガン(15秒間隔)
 	aitalkinterval = 15
-	ConfigTalkInterval("\u\s[10]\h\s[7]我一般不是这样说话的啊！！\w9\w9\u…\w5…\w5嗯，\w5是啊。")
+	ConfigTalkInterval("\u\s[10]\h\s[7]そんなに話すことなんてない！！\w9\w9\u…\w5…\w5まぁ、\w5そうだね。")
 }
 
 OnChoiceSelect_CONFIG_TALKMAX
 {
 	//---- うるさく話す(1分間隔)
 	aitalkinterval = 60
-	ConfigTalkInterval("\u\s[10]\h\s[7]我一般不是这样说话的啊！！\w9\w9\u…\w5…\w5嗯、\w5是啊。")
+	ConfigTalkInterval("\u\s[10]\h\s[7]そんなに話すことなんてない！！\w9\w9\u…\w5…\w5まぁ、\w5そうだね。")
 }
 
 OnChoiceSelect_CONFIG_TALKNORMAL
 {
 	//---- ふつうに話す(2分間隔)
 	aitalkinterval = 120
-	ConfigTalkInterval("\u\s[10]\h\s[4]一般而言，这是最难的。\w9\w9\u嘛，\w5我想以平时的对话品频率就好。")
+	ConfigTalkInterval("\u\s[10]\h\s[4]ふつうっていちばんむずかしいんだよね。\w9\w9\uまぁ、\w5いつものペースで喋ってるといいと思うよ。")
 }
 
 OnChoiceSelect_CONFIG_TALKPOOR
 {
 	//---- 静かに話す(5分間隔)
 	aitalkinterval = 300
-	ConfigTalkInterval("\u\s[10]\h\s[21]稍微有点太吵了呢。\w9\w9\u偶尔说说话就够了。")
+	ConfigTalkInterval("\u\s[10]\h\s[21]ちょっとやかましすぎたかな。\w9\w9\uたまに話すくらいがいいらしいね。")
 }
 
 OnChoiceSelect_CONFIG_TALKNONE
@@ -704,14 +704,14 @@ OnChoiceSelect_CONFIG_TALKCUSTOM
 	//---- カスタム
 	"\![open,sliderinput,OnChoiceSelect_CONFIG_TALKCUSTOM_DONE,0,%(aitalkinterval),10,900]"
 	--
-	"\u\s[10]\h\s[0]最右侧是15分钟，\w5最左侧是10秒。\w9\w9\u想不保存设置直接退出的话，按Esc键。"
+	"\u\s[10]\h\s[0]一番右側が15分ごと、\w5一番左側が10秒ごとだよ。\w9\w9\u設定せずに閉じたい時はESCキーね。"
 }
 
 OnChoiceSelect_CONFIG_TALKCUSTOM_DONE
 {
 	//---- カスタム完了
 	aitalkinterval = TOINT(ZEN2HAN(reference[0]))
-	ConfigTalkInterval("\u\s[10]\h\s[5]设置完成。")
+	ConfigTalkInterval("\u\s[10]\h\s[5]設定完了っ。")
 }
 
 //============エミリオぬき=======================================================================
@@ -724,11 +724,11 @@ OnChoiceSelect_CONFIG_EMILIO
 {
 	if config_disp_emilio {
 		config_disp_emilio = 0
-		Config_Disp("\p[2]\s[200]\h\s[3]唔。\w9%(charname(2))太碍事了。\w9\w9\p2\s[203]…\w5…\w5…\w5…\w5…。\w9\w9\s[-1]\b[-1]")
+		Config_Disp("\p[2]\s[200]\h\s[3]むう。\w9%(charname(2))が邪魔だって。\w9\w9\p2\s[203]…\w5…\w5…\w5…\w5…。\w9\w9\s[-1]\b[-1]")
 	}
 	else {
 		config_disp_emilio = 1
-		Config_Disp("\p2\s[-1]\u\s[10]\h\s[5]%(charname(2))～、\w5出来吧～。\w9\w9\p2\s[204]干嘛啊，\w5讨厌。")
+		Config_Disp("\p2\s[-1]\u\s[10]\h\s[5]%(charname(2))～、\w5おいで～。\w9\w9\p2\s[204]なんだよもう、\w5うるさいなぁ。")
 	}
 }
 
@@ -754,7 +754,7 @@ OnChoiceSelect_CONFIG_BATTERY
 //============ゴーストが閉じた時反応====================================================================
 ToolTip_CONFIG_GHOSTCLOSE
 {
-	'其他的人格关闭时，伪春菜是否作出反应的设置。'
+	'他のゴーストが終了した際に何か喋るかどうかを設定します。'
 }
 
 OnChoiceSelect_CONFIG_GHOSTCLOSE
@@ -767,7 +767,7 @@ OnChoiceSelect_CONFIG_GHOSTCLOSE
 //============表情復旧トークを有効====================================================================
 ToolTip_CONFIG_SURFACERESTORE
 {
-	'表情恢复为平静(OnSurfaceRestore)的指令是否生效。'
+	'表情が通常に戻る(OnSurfaceRestore)時のトークを有効にします。'
 }
 
 OnChoiceSelect_CONFIG_SURFACERESTORE
@@ -792,7 +792,7 @@ OnChoiceSelect_CONFIG_RESET_NEWS
 //============ログリセット====================================================================
 ToolTip_CONFIG_RESET_LOG
 {
-	'删除全部“刚刚说了什么”中的记录。'
+	'「さっき何て言ったの」のログをすべて消去します。'
 }
 
 OnChoiceSelect_CONFIG_RESET_LOG
@@ -828,10 +828,10 @@ OnSwissArmyKnifeMenu
  		_noplugin = 1
 	}
 	
-	E.Title('菜单：瑞士军刀菜单')
+	E.Title('メニュー：お役立ちメニュー')
 	menucount = 0
 	--
-	'\u\s[10]\h\s[5]各种各样的实用菜单的角落！！\w9\w9\u\s[11]…\w5…\w5角落？\w9\w9\h\n[50]'
+	'\u\s[10]\h\s[5]いろいろお役立ちメニューのコーナー！！\w9\w9\u\s[11]…\w5…\w5コーナー？\w9\w9\h\n[50]'
 	--
 	'\_q'
 	--
@@ -859,16 +859,16 @@ OnSwissArmyKnifeMenu
 	}
 	--
 	if call_from_menu {
-		"%(DispMainMenu_LF)\![*]\q[%(MenuItemHalf('校对时间')),SNTP]"
+		"%(DispMainMenu_LF)\![*]\q[%(MenuItemHalf('時刻合わせ')),SNTP]"
 		--
 		if basewarename == 'SSP' {
-			"%(DispMainMenu_LF)\![*]\q[%(MenuItemHalf('日历')),CALENDAR]"
+			"%(DispMainMenu_LF)\![*]\q[%(MenuItemHalf('カレンダー')),CALENDAR]"
 		}
 		--
 		DispReturnCommand('MAINMENU')
 	}
 	else {
-		"\n[170]\![X]\q[%(MenuItem('关闭')),CANCEL_NOTALK]"
+		"\n[170]\![X]\q[%(MenuItem('閉じる')),CANCEL_NOTALK]"
 	}
 	--
 	'\_q'
@@ -888,7 +888,7 @@ OnSwissArmyKnifeExecute
 		_i += 1
 	}
 	--
-	"、\w5完成了～。\e"
+	"、\w5おわったよ～。\e"
 }
 
 //============時刻合わせ=================================================================================
@@ -900,7 +900,7 @@ OnChoiceSelect_SNTP
 //============カレンダー=================================================================================
 OnChoiceSelect_CALENDAR
 {
-	"\p2\s[205]\u\s[10]\h\s[5]\![open,calendar]日历！\w9\w9\p2誰んだー。\w9\w9\uオラんだー。\w9\w9\_s[0,1,2]\n\n…\w5…\w5…\w5…\w5…。\_s\w9\w9\h\s[4]\n\nやめようかなこれ。\w9\w9\p2\n\n\s[204]だから、\w5最初からやめとけばって言ったのに。\w9\w9\u\s[11]\n\n古典的すぎて%(username)も絶句してるよたぶん。\e"
+	"\p2\s[205]\u\s[10]\h\s[5]\![open,calendar]カレンダー！\w9\w9\p2誰んだー。\w9\w9\uオラんだー。\w9\w9\_s[0,1,2]\n\n…\w5…\w5…\w5…\w5…。\_s\w9\w9\h\s[4]\n\nやめようかなこれ。\w9\w9\p2\n\n\s[204]だから、\w5最初からやめとけばって言ったのに。\w9\w9\u\s[11]\n\n古典的すぎて%(username)も絶句してるよたぶん。\e"
 }
 
 //============質問コーナー====================================================
@@ -913,7 +913,7 @@ OnChoiceSelect_QUESTION
 {
 	"\h\b[2]"
 	--
-	E.Title('菜单：问题角')
+	E.Title('メニュー：質問コーナー')
 	--
 	"\u\s[10]\h\s[5]なんでも答えちゃうよっ！！\w9\w9\u\s[11]…\w5…\w5ホントに？"
 	--
@@ -940,16 +940,16 @@ OnChoiceSelect_STAMP
 OnEM_StampMenuDisplay
 {
 	if stamp_already_exist {
-		"\u\s[10]\h\s[27]嗯～。\w9\n我想已经有邮票了。\w9\w9\u尝试打开邮票簿。\h\n\n[half]"
+		"\u\s[10]\h\s[27]ん～。\w9\nもう押してあると思うんだけど。\w9\w9\uスタンプ帳を開いてみてね。\h\n\n[half]"
 		--
-		"\![*]\q[%(MenuItem('打开邮票簿')),"
+		"\![*]\q[%(MenuItem('スタンプ帳を開く')),"
 		--
 		'"script:\![raiseplugin,379E0DA0-131C-11DD-E1AC-90009E101CFE,OnMenuExec]"'
 		--
 		"]"
 	}
 	else {
-		"\u\s[10]\h\s[5]看啊看啊%(charname(1))。\w9\n用白薯做成的白薯邮票诶。\w9\nこれがホントのイモ判だね。\w9\w9\u…\w5…\w5いもでいもってどういうことだろう。\w9\nちょっと見せて。\w9\w9\h\s[5]\n\nはい、\w5どうぞー。\w9\w9\u\s[11]\n\n…\w5…\w5ああ。\w5なるほど。\w9\nなんというか、\w5%(charname(0))らしいね。\w9\w9\h\n\n%(username)にも押してあげるね～。\w9ぽんっ。"
+		"\u\s[10]\h\s[5]みてみて%(charname(1))。\w9\nさつまいもでさつまいものスタンプ作ったんだよー。\w9\nこれがホントのイモ判だね。\w9\w9\u…\w5…\w5いもでいもってどういうことだろう。\w9\nちょっと見せて。\w9\w9\h\s[5]\n\nはい、\w5どうぞー。\w9\w9\u\s[11]\n\n…\w5…\w5ああ。\w5なるほど。\w9\nなんというか、\w5%(charname(0))らしいね。\w9\w9\h\n\n%(username)にも押してあげるね～。\w9ぽんっ。"
 		--
 		"\![raiseplugin,379E0DA0-131C-11DD-E1AC-90009E101CFE,OnStampAdd,ghost\master\img\stamp0.png,"
 		--
@@ -985,11 +985,11 @@ CreateDispGhostList
 	
 	found_myself = 0
 	_len = 22
-	_tx = '  名称                     时间:分 操作'
+	_tx = '  名前                     時間:分 操作'
 	
 	if _argv[0] {
 		_len = 28
-		_tx = '  名称                         操作'
+		_tx = '  名前                         操作'
 	}
 	
 	_n = ARRAYSIZE(array_list)
@@ -1035,13 +1035,13 @@ ToolTip_OnGetGhostParameters
 	"!%(reference[3])"
 	--
 	if 'Delete' _in_ reference[2] {
-		"从列表中删除"
+		"をリストから削除"
 	}
 	elseif 'Change' _in_ reference[2] {
-		"将被替换"
+		"に切り替え"
 	}
 	elseif 'Call' _in_ reference[2] {
-		"将被呼叫"
+		"を呼び出し"
 	}
 }
 
@@ -1083,7 +1083,7 @@ OnGetGhostParameters3
 //============人気ランキング====================================================
 ToolTip_RATEOFUSE
 {
-	"Ghost的使用排名＆和启动记录"
+	"ゴーストの使用ランキングを表示＆そこから起動できます"
 }
 
 On_rateofusegraph
@@ -1100,19 +1100,19 @@ OnChoiceSelect_RATEOFUSE
 	
 	"\0\b[2]"
 	--
-	E.Title('Ghost排名')
+	E.Title('ゴーストランキング')
 	--
-	"\0\s[5]\![set,choicetimeout,0]Ghost排名的角落！\w9\w9\u\s[10]%(ARRAYSIZE(array_list))排出来了。\0"
+	"\0\s[5]\![set,choicetimeout,0]ゴーストランキングのコーナー！\w9\w9\u\s[10]%(ARRAYSIZE(array_list))組分だね。\0"
 	--
 	if found_myself > 0 {
-		"\w9\w9\0\s[2]\n\n[half]啊，我在上面诶！"
+		"\w9\w9\0\s[2]\n\n[half]あっ、ボクもランクインしてる！"
 	}
 	--
 	"\n\n[half]\_q"
 	--
 	_tx
 	--
-	"\n\n[half]\![*]\q[%(MenuItem('用图表显示')),OPEN_GRAPH]"
+	"\n\n[half]\![*]\q[%(MenuItem('グラフで表示する')),OPEN_GRAPH]"
 	--
 	DispReturnCommand('MAINMENU')
 }
@@ -1181,12 +1181,12 @@ OnRateGhostCall
 //============お気に入り====================================================
 ToolTip_FAV
 {
-	"记录喜欢的人格，设置启动时是否加载。"
+	"お気に入りのゴーストを記録し、起動することができます。"
 }
 
 OnChoiceSelect_FAV
 {
-	FavListDisp('\s[0]最喜欢的人格都在这里了。')
+	FavListDisp('\s[0]お気に入りのゴーストさんたちだよ。')
 }
 
 FavListDisp
@@ -1201,22 +1201,22 @@ FavListDisp
 	
 	"\0\b[2]"
 	--
-	E.Title('最喜欢的人格')
+	E.Title('お気に入りゴースト')
 	--
 	"\0\![set,choicetimeout,0]%(_argv[0])\w9\w9\u\s[10]"
 	--
 	if _cnt {
-		"%(_cnt)已注册。"
+		"%(_cnt)組登録済。"
 	}
 	else {
-		"谁也没有注册呢。"
+		"誰も登録されてないね。"
 	}
 	--
 	"\0\n\n[half]\_q"
 	--
 	_tx
 	--
-	"\n\n[half]\![*]\q[%(MenuItem('启动时添加该人格')),ADDBOOTGHOST]"
+	"\n\n[half]\![*]\q[%(MenuItem('起動中のゴーストを追加')),ADDBOOTGHOST]"
 	--
 	DispReturnCommand('MAINMENU')
 }
@@ -1286,13 +1286,13 @@ OnActiveGhostListGetLast
 	}
 	
 	if (_add_count - _modify_count) > 0 {
-		FavListDisp('\s[5]已添加。')
+		FavListDisp('\s[5]追加したよ。')
 	}
 	elseif _modify_count > 0 {
-		FavListDisp('\s[0]已经注册过了哦。')
+		FavListDisp('\s[0]もう登録済だね。')
 	}
 	else {
-		FavListDisp('\s[4]除我们之外没其他人了呢。\w9\w9\u\s[10]试着呼叫其他的人格吧。\n')
+		FavListDisp('\s[4]ボクたちのほかに誰もいないね。\w9\w9\u\s[10]他のゴーストさんを呼んでみてね。\n')
 	}
 }
 
@@ -1326,5 +1326,5 @@ OnFavGhostDelete
 		}
 	}
 	
-	FavListDisp('\s[0]已经删除了哟。')
+	FavListDisp('\s[0]削除したよ。')
 }

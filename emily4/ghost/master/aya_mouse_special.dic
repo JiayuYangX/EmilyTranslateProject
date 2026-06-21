@@ -13,8 +13,8 @@ OnHandActivate
 
 HandActivate_NormalStart_Ribbon
 {
-	if '安全气囊' _in_ reference[3] {
-		"\u\s[10]\h\s[7]エアバッグじゃない！\w5ちゃんと！！\w9\w9\u啊，\w5実はそれ本当にエアバッグで、\w5いやらしい手が触りに来た時に急激に膨らんで吹き飛ばすんだよ。\w9\w9\h\s[2]\n\nええっ！？\w5真的吗！？\w9\w9\u\n\n…\w5…\w5嘘。\w9\w9\h\s[4]\n\n…\w5…\w5…。"
+	if 'エアバッグ' _in_ reference[3] {
+		"\u\s[10]\h\s[7]エアバッグじゃない！\w5ちゃんと！！\w9\w9\uあ～、\w5実はそれ本当にエアバッグで、\w5いやらしい手が触りに来た時に急激に膨らんで吹き飛ばすんだよ。\w9\w9\h\s[2]\n\nええっ！？\w5本当に！？\w9\w9\u\n\n…\w5…\w5嘘。\w9\w9\h\s[4]\n\n…\w5…\w5…。"
 	}
 }
 
@@ -41,11 +41,11 @@ HandActivate_SuperContinue_1 : nonoverlap
 {
 	'\C'
 	--
-	'啊 '
-	'唔 '
-	'嚯 '
-	'哇 '
-	'诶呼 '
+	'あっ '
+	'うっ '
+	'ほぇ '
+	'うぁ '
+	'へふ '
 }
 
 HandActivate_SuperEnd_1
@@ -62,10 +62,10 @@ HandActivate_SuperContinue_2 : nonoverlap
 {
 	'\u\s[10]\h\s[4]'
 	--
-	'呼～～。'
-	'呜哇～～。'
-	'唔～～。'
-	'啊唔～～。'
+	'へぅ～～。'
+	'うわぁ～～。'
+	'むぅ～～。'
+	'あぅ～～。'
 }
 
 HandActivate_SuperEnd_2
@@ -130,7 +130,7 @@ MouseTH_Nade0Ribbon
 
 MouseTH_Wheel0Skirt
 {
-	"\u\s[10]\h\s[9]别\w5别\w5别碰！！"
+	"\u\s[10]\h\s[9]め、\w5め、\w5めくるなっ！！"
 	--
 	TheHandResponseMessage
 }

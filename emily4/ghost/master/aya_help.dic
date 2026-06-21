@@ -13,7 +13,7 @@ OnConfigurationDialogHelp
 	
 	"\0\v"
 	--
-	E.Title("帮助")
+	E.Title("ヘルプ")
 	--
 	_v = EVAL("HELP_%(reference[0])_%(_name)")
 	

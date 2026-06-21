@@ -19,7 +19,7 @@ On_sakura.portalbuttoncaption
 }
 On_portalrootbutton.caption
 {
-	'门户网站'
+	'おきにいり'
 }
 
 //---- ポータルサイトのリスト -----------------------------------------------------------
@@ -36,11 +36,11 @@ On_sakura.portalsites_EX : array
 	'SSP BUGTRAQ				| http://ssp.shillest.net/								| '
 	'CROW						| http://crow.aqrs.jp/									| '
 //	'S Software					| http://www.s-software.net/							| '
-//	'Usada Sakura				| http://usada.sakura.vg/								| '
+//	'うさださくら				| http://usada.sakura.vg/								| '
 	'偽林檎						| http://ccm.sherry.jp/									| '
 	'ninix-aya					| http://ninix-aya.osdn.jp/								| '
 	'-							|														| '
-	'Ghost Center			    | http://ngc.aqrs.jp/									| '
+	'ゴーストセンター			| http://ngc.aqrs.jp/									| '
 	'GHOST TOWN					| http://ghosttown.mikage.jp/							| '
 	'-							|														| '
 	'Yet Another AYA			| http://ms.shillest.net/yaya.xhtml						| '
@@ -68,7 +68,7 @@ On_sakura.recommendbuttoncaption
 }
 On_recommendrootbutton.caption
 {
-	'推荐网址'
+	'おともだち'
 }
 
 //---- 本体側おすすめサイトのリスト -----------------------------------------------------
@@ -80,7 +80,7 @@ On_sakura.recommendsites
 //---- kero側おすすめサイトのボタンキャプション -----------------------------------------
 On_kero.recommendbuttoncaption
 {
-	'推荐网址'
+	'おともだち'
 }
 
 //---- kero側おすすめサイトのリスト -----------------------------------------------------
@@ -92,7 +92,7 @@ On_kero.recommendsites
 //---- エミリオ側おすすめサイトのボタンキャプション -----------------------------------------
 On_char2.recommendbuttoncaption
 {
-	'便利功能 '
+	'機能実行'
 }
 
 //---- エミリオ側おすすめサイトのリスト -----------------------------------------------------
@@ -155,7 +155,7 @@ On_updatebuttoncaption
 }
 On_updatebutton.caption
 {
-	'更新'
+	'こうしん'
 }
 
 //---- readmeボタンのキャプション -------------------------------------------------------
@@ -165,7 +165,7 @@ On_readmebuttoncaption
 }
 On_readmebutton.caption
 {
-	'自述'
+	'よんでね'
 }
 
 //---- 消滅指示ボタン表示切り替え -------------------------------------------------------

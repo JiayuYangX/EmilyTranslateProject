@@ -15,20 +15,20 @@ OnCommunicate_舞子
 	if 'Emily' _in_ reference[1] || 'エミリ' _in_ reference[1] { //名前を呼ばれた
 		_greeting = ''
 		_greeting2 = ''
-		if '早安' _in_ reference[1] {
-			_greeting = '早安'
-			_greeting2 = '早安啦~'
+		if 'おはよ' _in_ reference[1] {
+			_greeting = 'おはよ'
+			_greeting2 = 'おはようございます'
 		}
-		elseif '午安' _in_ reference[1] {
-			_greeting = '中午好'
-			_greeting2 = '午安'
+		elseif 'こんにちは' _in_ reference[1] {
+			_greeting = 'こんにちは'
+			_greeting2 = 'こんにちは'
 		}
 		else { //if 'こんばんは' _in_ reference[1]
-			_greeting = '安啦~~'
-			_greeting2 = '晚安'
+			_greeting = 'ばわわ'
+			_greeting2 = 'こんばんは'
 		}
 		
-		"\u\s[10]\p2\s[204]\h\s[5]%(_greeting)～、\w5舞子酱。\w9\w9\u%(_greeting2)。\w9\w9\h\n\n…\w5…\w5\s[4]%(charname(2))、\w5あいさつは？\w9\w9\p2\s[214]…\w5…\w5%(_greeting2)。\w9\w9\h\n\nせめてあいさつぐらいちゃんとしようよ。"
+		"\u\s[10]\p2\s[204]\h\s[5]%(_greeting)～、\w5舞子ちゃん。\w9\w9\u%(_greeting2)。\w9\w9\h\n\n…\w5…\w5\s[4]%(charname(2))、\w5あいさつは？\w9\w9\p2\s[214]…\w5…\w5%(_greeting2)。\w9\w9\h\n\nせめてあいさつぐらいちゃんとしようよ。"
 	}
 }
 

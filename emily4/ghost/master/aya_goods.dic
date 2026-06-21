@@ -74,11 +74,11 @@ EMGoodsLoad : void
 		lastday = GETTIME[2]
 		
 		//毎日1回つかう
-		EMGoodsAdd('健胃药',0 - _diff)
+		EMGoodsAdd('健胃薬',0 - _diff)
 		
 		//傷薬はちょこちょこ - 5日に1回くらい？
 		if RAND(5) + 1 <= _diff {
-			EMGoodsAdd('伤药',-1)
+			EMGoodsAdd('傷薬',-1)
 		}
 	}
 }
