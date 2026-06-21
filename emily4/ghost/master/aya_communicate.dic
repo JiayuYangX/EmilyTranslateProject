@@ -1,11 +1,11 @@
 ﻿/*-------------------------------------------------------------------------------------------
  *  Tuned system dictionary for SHIORI/3.0 "EP4/FullThrottle"
  *  
- *  コミュニケート辞書コア
+ *  沟通辞书核心
  * ------------------------------------------------------------------------------------------
-*/
+ */
 
-//**** こちらから話しかける *************************************************************
+//**** 主动搭话 *************************************************************
 
 StartCommunicate
 {
@@ -22,17 +22,17 @@ StartCommunicateScenario
 }
 
 
-//**** 話しかけられたので返事する *******************************************************
+//**** 被搭话了所以回复 *******************************************************
 
 /*---------------------------------------------------------------------------------------
-  OnCommunicateイベント
-  呼び出しreference[1] = SSTP Reference0 = 受信 reference[2] に注意
----------------------------------------------------------------------------------------*/
+  OnCommunicate事件
+  调用方reference[1] = SSTP Reference0 = 接收 reference[2] 注意
+----------------------------------------------------------------------------------------*/
 OnCommunicate
 {
 	if ARRAYSIZE(reference) >= 4 {
 		if STRLEN(reference[3]) {
-			if reference[2] == 'ECHO/1.0' { //台本コミュニケート(受信)
+			if reference[2] == 'ECHO/1.0' { //台本通信(接收)
 				if ISFUNC('台本コミュニケート有効') && (TOINT(EVAL('台本コミュニケート有効')) > 0) {
 					res_securitylevel = 'External'
 					res_reference[0] = reference[0]
@@ -45,24 +45,24 @@ OnCommunicate
 				}
 				return
 			}
-			elseif reference[2] == 'JPRadish' { //大根コミュニケート(受信)
-				ExecuteJPRadish(reference[3,100]) //範囲外指示は切り詰められるのでこれでよい
+			elseif reference[2] == 'JPRadish' { //萝卜通信(接收)
+				ExecuteJPRadish(reference[3,100]) //范围外指示会被截断所以这样就行
 				return
 			}
 		}
 	}
 
 	if reference[0] == 'user' || reference[0] == 'User' {
-		//---- ユーザーからの話しかけ
+		//---- 来自用户的搭话
 		OnCommunicate_User
 	}
 	else {
-		//---- ゴーストからの話しかけ
+		//---- 来自人格的搭话
 		ReplyToGhost
 	}
 }
 
-//---- ゴーストからの話しかけ -----------------------------------------------------------
+//---- 来自人格的搭话 -----------------------------------------------------------
 ReplyToGhost
 {
 	_event = ''
@@ -105,7 +105,7 @@ ReplyToGhost
 }
 
 /*-----------------------------------------------------------------------------
-	だいこん
+	萝卜
 -----------------------------------------------------------------------------*/
 MakeJPRadishReply : void
 {
@@ -117,7 +117,7 @@ SendJPRadishCommunicate : void
 	StartCommunicate(_argv[0],'JPRadish',_argv[1,100])
 }
 
-//ユーティリティ
+//实用函数
 FindJPRadish
 {
 	_n = ARRAYSIZE(jpradish_name_array)
@@ -155,7 +155,7 @@ GetJPRadish
 	return
 }
 
-//_argv[0] = reference[3] = 識別子
+//_argv[0] = reference[3] = 标识符
 ExecuteJPRadish
 {
 	case _argv[0] {
@@ -186,7 +186,7 @@ ExecuteJPRadish
 				return
 			}
 			_tmp = ZEN2HAN(_argv[2],'number')
-			if ISINTSTR(_tmp) { //整数だった
+			if ISINTSTR(_tmp) { //是整数
 				SetJPRadish(_argv[1],TOINT(_tmp))
 			}
 			else {
@@ -214,12 +214,12 @@ ExecuteJPRadish
 }
 
 /*---------------------------------------------------------------------------------------
- *  関数名：RegisterOneTimeCommunicate
- *  機能　：一度だけのコミュニケートを登録します
- *  引数　：0:ゴースト名　1:キーワード　2:イベント名
- *  注意　：次にコミュニケートが来た時一度だけチェックされ、該当しなくても始末されます
+ *  函数名：RegisterOneTimeCommunicate
+ *  功能：注册仅执行一次的通信
+ *  参数：0:人格名　1:关键词　2:事件名
+ *  注意：在下次通信到来时仅检查一次，即使不匹配也会被清理
  * --------------------------------------------------------------------------------------
-*/
+ */
 RegisterOneTimeCommunicate
 {
 	if _argc < 3 {
@@ -230,4 +230,3 @@ RegisterOneTimeCommunicate
 	communicate_onetime_keyword ,= _argv[1]
 	communicate_onetime_event ,= _argv[2]
 }
-
