@@ -41,7 +41,7 @@ HELP_setup_check_update : array
 HELP_setup_ex_handler : array
 {
 	//内容(脚本)
-	"\u\s[10]\h\s[27]例外……\w5是什么意思呢。\w9\w9\u勾选后人格不容易因bug而强制退出，\w5但在开发中最好关掉。"
+	"\u\s[10]\h\s[27]例外……\w5是什么意思呢。\w9\w9\u勾选后人格不容易因Bug而强制退出，\w5但在开发中最好关掉。"
 
 	//标题(不需要时可为空)
 	"" //使用异常处理
@@ -97,10 +97,10 @@ HELP_setup_show_readme : array
 HELP_setup_register_hotkey : array
 {
 	//内容(脚本)
-	"\u\s[10]\0\s[5]登记热蛋糕！\w9\w9\1不对啦。是热键啦。\w9\w9\0\n\n那就，\w5别管它。\w9\w9\1\n\n…\w5…\w5Ctrl-Shift-Enter最小化，俗称「老板来了」功能等等，\w5是否执行常驻键盘快捷键。\e"
+	"\u\s[10]\0\s[5]登记热蛋糕！\w9\w9\1不对啦。是快捷键啦。\w9\w9\0\n\n那就，\w5别管它。\w9\w9\1\n\n…\w5…\w5Ctrl-Shift-Enter最小化，俗称「老板来了」功能等等，\w5是否执行常驻键盘快捷键。\e"
 
 	//标题(不需要时可为空)
-	"" //登记热键
+	"" //登记快捷键
 }
 HELP_setup_userinfo : array
 {

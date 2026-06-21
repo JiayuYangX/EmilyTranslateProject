@@ -43,7 +43,7 @@ JPRadish_Shop_None
 JPRadish_Shop_蚊取り線香
 {
 	if 'エンバグ' _in_ reference[1] {
-		"\u\s[10]\p2\s[200]\h\s[27]呼——嗯、\w5原来可以不容易Bug啊。\w9\n\_a[GHOST_所長たん]所长桑\_a也得推荐一下才行。\w9\w9\p2\s[204]…\w5…\w5那是什么蚊香啊、\w5那个。\w9\w9\u\s[10]嘛、\w5反正%(charname(0))是不需要啦。\w9\w9\h\s[8]\n\n抱歉啦——。"
+		"\u\s[10]\p2\s[200]\h\s[27]呼——嗯、\w5原来可以不那么容易产生Bug啊。\w9\n\_a[GHOST_所長たん]所长桑\_a也得推荐一下才行。\w9\w9\p2\s[204]…\w5…\w5那是什么蚊香啊、\w5那个。\w9\w9\u\s[10]嘛、\w5反正%(charname(0))是不需要啦。\w9\w9\h\s[8]\n\n抱歉啦——。"
 		
 		MakeJPRadishReply('購入拒否',_argv[0],'不要')
 	}
