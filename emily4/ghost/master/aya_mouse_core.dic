@@ -1,4 +1,4 @@
-///////// マウス入力関連辞書（コア）
+///////// 鼠标输入相关词典（核心）
 
 EMMouseHitExec
 {
@@ -33,7 +33,7 @@ EMGetPrefix
 	}
 }
 
-//---- OnMouseMoveイベント --------------------------------------------------------------
+//---- OnMouseMove事件 --------------------------------------------------------------
 OnMouseMove
 {
 	OnMouseMoveWheel(0,64)
@@ -60,16 +60,16 @@ OnMouseMoveWheel
 		}
 		stroketimer[_side] = GETTICKCOUNT
 		
-		//----どこかが撫でられている
+		//----某处正在被抚摸
 		_stroke = TOINT(stroke[_side])
 		_stroke += 1
 		stroke[_side] = _stroke
 		
-		//---- 撫でられた量が一定量に達したら「なでられている」と判断
+		//---- 被抚摸量达到一定时判断为"正在被抚摸"
 		if _stroke >= _argv[1] {
-			//talking判定は不評なので解除
+			//talking判定不受欢迎所以解除
 			//if 'talking' !_in_ status {
-			//---- 撫でられた。撫でられた部位を見てトークする
+			//---- 被抚摸了。根据被摸的部位进行对话
 			_name = ""
 			_prefix = EMGetPrefix
 			if _argv[0] {
@@ -85,12 +85,12 @@ OnMouseMoveWheel
 	}
 	else
 	{
-		// 定義された部位はどこも撫でられていない
+		// 已定义的部位全部没有被摸
 		stroke[_side] = 0
 	}
 }
 
-//---- OnMouseDoubleClickイベント -------------------------------------------------------
+//---- OnMouseDoubleClick事件 -------------------------------------------------------
 OnMouseDoubleClick
 {
 	_prefix = EMGetPrefix
@@ -112,7 +112,7 @@ OnMouseDoubleClick
 	EVAL("%(_prefix)_DoubleClick%(reference[3])")
 }
 
-//---- OnMouseClickイベント -------------------------------------------------------
+//---- OnMouseClick事件 -------------------------------------------------------
 OnMouseClick
 {
 	if TOINT(reference[5]) != 0 {
@@ -139,14 +139,14 @@ OnMouseClick
 }
 
 /*--------------------------------------------------------------
-	マウスジェスチャ
+	鼠标手势
 	
-	呼び出される関数
-		OnMouseGestureCall(_argv[0],...) - 通常用
-		OnMouseGestureCallCircle(_argv[0],...) - 回転用
+	调用的函数
+		OnMouseGestureCall(_argv[0],...) - 普通用
+		OnMouseGestureCallCircle(_argv[0],...) - 转圈用
 		
-	_argcに現在までのアクションの数
-	_argv[0]～[_argc-1]にはアクション方向が日本語で8方向＋回転
+	_argc为到当前为止的动作数量
+	_argv[0]～[_argc-1]中为动作方向，以日语记录8方向＋旋转
 --------------------------------------------------------------*/
 
 OnMouseGesture
@@ -234,7 +234,7 @@ OnMouseGesture
 	}
 }
 
-/*サンプル
+/*示例
 OnMouseGestureCall0Face_left_right_left_right
 {
 	"TEST"

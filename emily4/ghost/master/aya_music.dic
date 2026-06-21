@@ -1,4 +1,4 @@
-﻿///////// 音楽反応系
+﻿///////// 音乐反应系
 OnSystemUnload.MUSIC
 {
 	ERASEVAR('info_key','info_value')

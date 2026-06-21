@@ -1,4 +1,4 @@
-﻿///////// ほかのゴースト紹介（アンカー／メニューより呼び出し）
+﻿///////// 其他人格介绍（从锚点/菜单调用）
 
 #define GHOST_MENUID      0
 #define GHOST_FULLNAME    1
@@ -8,13 +8,13 @@
 #define GHOST_URL         5
 #define GHOST_SCRIPT      6
 
-//単語辞書
+//单词词典
 ms_ghost_introduce_array
 {
 	GhostIntroduceData(GHOST_SAKURANAME)
 }
 
-//お気に入りメニュー
+//收藏菜单
 OnRecommendsiteChoice
 {
 	if ARRAYSIZE(reference) >= 5 {
@@ -27,7 +27,7 @@ OnRecommendsiteChoice
 	}
 }
 
-//ジャンプ
+//跳转
 GI_JumpToDistributorMenu
 {
 	'\h\_q'
@@ -62,7 +62,7 @@ OnGIGhostBootMenuExec
 
 #define GHOST_INTRODUCE_ELEMSIZE 4
 
-//紹介コア
+//介绍核心
 GhostIntroduce
 {
 	_found = -1
@@ -137,7 +137,7 @@ GhostIntroduce
 	}
 }
 
-//-----データからメニュー作成------------------------------------------------------------------
+//-----从数据创建菜单------------------------------------------------------------------
 GhostIntroduceToMenu : void
 {
 	_arr =    GhostIntroduceData(GHOST_FULLNAME)
@@ -164,7 +164,7 @@ GhostIntroduceToMenu : void
 	menu.kero.recommendsites = JOIN(_result.kero,'')
 }
 
-//-----ここから紹介------------------------------------------------------------------
+//-----以下为介绍------------------------------------------------------------------
 GhostIntroduceData : array
 {
 	_flag = TOINT(_argv[0])

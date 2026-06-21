@@ -1,8 +1,8 @@
-﻿///////// 特殊処理
-//---- 遅延展開 -------------------------------------------
+﻿///////// 特殊处理
+//---- 延迟展开 -------------------------------------------
 E.EvalEmbedValue
 {
-	if STRSTR(_argv[0],'"',0) < 0 { //"がないときはふつうの処理でいい
+	if STRSTR(_argv[0],'"',0) < 0 { //没有"的时候用普通处理就行
 		EVAL('"' + _argv[0] + '"')
 		return
 	}
@@ -21,17 +21,17 @@ E.EvalEmbedValue
 			break
 		}
 		
-		_pos = 0    //現在の処理位置
-		_pare = 1   //括弧ネスト段数
-		_open = 0   //開き括弧
-		_close = 0  //閉じ括弧
-		_dq = 0     //ダブルクォート
-		_dqend = 0  //ダブルクォート終了
-		_qt = 0     //クォート
-		_qtend = 0  //クォート終了
-		_eq = ''    //式と処理結果
+	_pos = 0    //当前处理位置
+	_pare = 1   //括号嵌套层数
+	_open = 0   //左括号
+	_close = 0  //右括号
+	_dq = 0     //双引号
+	_dqend = 0  //双引号结束
+	_qt = 0     //引号
+	_qtend = 0  //引号结束
+	_eq = ''    //表达式与处理结果
 		_text = _array[1]
-		_len = STRLEN(_text)    //長さ
+		_len = STRLEN(_text)    //长度
 		
 		while 1 {
 			_open  = STRSTR(_text,'(',_pos)
@@ -40,7 +40,7 @@ E.EvalEmbedValue
 			_qt    = STRSTR(_text,"'",_pos)
 			
 			if _open < 0 && _close < 0 && _dq < 0 && _qt < 0 {
-				_pos = -1 //異常
+				_pos = -1 //异常
 				break
 			}
 
@@ -52,7 +52,7 @@ E.EvalEmbedValue
 			if _qt < _open && _qt < _close {
 				_qtend = STRSTR(_text,"'",_qt + 1)
 				if _qtend < 0 {
-					_pos = -1 //異常
+					_pos = -1 //异常
 					break
 				}
 				_pos = _qtend + 1
@@ -81,12 +81,12 @@ E.EvalEmbedValue
 			}
 		}
 		
-		if _pos < 0 { //異常時
-			_result += " + '" + '%(' + _text + "'" //文字列として扱う)
+		if _pos < 0 { //异常时
+			_result += " + '" + '%(' + _text + "'" //当作字符串处理)
 			break
 		}
 		else {
-			if _pos > 1 { //少なくとも1文字以上の式
+			if _pos > 1 { //至少1个字符以上的表达式
 				_eq = SUBSTR(_text,0,_pos - 1)
 				_result += " + '" + REPLACE(TOSTR(EVAL(_eq)),"'","' + CHR(0x27) + '") + "'"
 			}
@@ -109,7 +109,7 @@ E.ConvertToNum
 	TOINT(ZEN2HAN(_argv[0]));
 }
 
-//---- 並行しゃべり -------------------------------------------
+//---- 并行说话 -------------------------------------------
 E.Parallel
 {
 	_textarray  = IARRAY
@@ -123,7 +123,7 @@ E.Parallel
 		if _type == 1 { //整数
 			_scopearray[_scopenum] = _argv[_i]
 		}
-		elseif _type == 3 { //文字列
+		elseif _type == 3 { //字符串
 			_textarray ,= _argv[_i]
 
 			_textlenarray[_scopenum] = STRLEN(_argv[_i])
@@ -131,7 +131,7 @@ E.Parallel
 				_maxlen = _textlenarray[_scopenum]
 			}
 			
-			if ARRAYSIZE(_scopearray) <= _scopenum { //スコープ初期化
+			if ARRAYSIZE(_scopearray) <= _scopenum { //作用域初始化
 				_scopearray[_scopenum] = _scopenum
 			}
 			_scopenum += 1
@@ -143,14 +143,14 @@ E.Parallel
 		_curposarray ,= 0
 	}
 	
-	_nextpos = 0       //文字切り出し計算用
-	_j = 0             //内側ループ変数
-	_result = ''       //結果スクリプト
-	_lastscope = -1    //直前のスコープ
-	_temptext = IARRAY //分割後の文字列を一時保存
-	_outcount = 0      //クイックセッション制御用カウンタ
+	_nextpos = 0       //文字切出计算用
+	_j = 0             //内侧循环变量
+	_result = ''       //结果脚本
+	_lastscope = -1    //当前作用域
+	_temptext = IARRAY //暂存分割后的字符串
+	_outcount = 0      //快速会话控制用计数器
 	
-	_isreverse = 0     //出力スクリプト最適化のためのHack
+	_isreverse = 0     //为输出脚本最优化而做的Hack
 	_joinpos = 0           //同上
 	
 	for _i = 0 ; _i < _maxlen ; _i++ {
@@ -180,7 +180,7 @@ E.Parallel
 			}
 			
 			_outcount += 1
-			if _outcount == 2 { //2つめ以降はクイックセッションでウェイトなし
+			if _outcount == 2 { //第二个起用快速会话无等待
 				_result += '\_q'
 			}
 			
@@ -200,7 +200,7 @@ E.Parallel
 			_result += _temptext[_joinpos]
 		}
 		
-		if _outcount >= 2 { //クイックセッション解除
+		if _outcount >= 2 { //快速会话解除
 			_result += '\_q'
 		}
 		_isreverse = ! _isreverse
@@ -210,7 +210,7 @@ E.Parallel
 }
 
 /*-------------------------------------------------------------------------------------------------
-	配列ソート関数 for AYA5
+	配列ソート関数 for AYA5 → 数组排序函数 for AYA5
 	By ちに
 -------------------------------------------------------------------------------------------------*/
 E.SortArray.Ssort
@@ -221,7 +221,7 @@ E.SortArray.Ssort
 
 	for _i = 0; _i <= (_arraysize - 1); _i++ {
 		for _j = _i; _j <= _arraysize; _j++ {
-			if _array[_i] > _array[_j] {	// >:小さい順　<:大きい順
+			if _array[_i] > _array[_j] {	// >:升序 <:降序
 				_assist = _array[_i]
 				_array[_i] = _array[_j]
 				_array[_j] = _assist
@@ -271,19 +271,19 @@ E.Swap
 }
 
 
-//---- お気に入りメニュー変換 -------------------------------------------
+//---- 收藏菜单转换 -------------------------------------------
 E.LinkMenuConvert
 {
 	_text = ''
 	_data = IARRAY
 	for _i = 0 ; _i < _argc ; _i++ {
-		_data = (RE_SPLIT(_argv[_i],'[ \t]*\|[ \t]*'),'','') //ダミー
+		_data = (RE_SPLIT(_argv[_i],'[ \t]*\|[ \t]*'),'','') //占位
 		_text += "%(_data[0])%(CHR(1))%(_data[1])%(CHR(1))%(_data[2])%(CHR(1))%(CHR(2))"
 	}
 	_text;
 }
 
-//---- インストール済リスト -------------------------------------------------------
+//---- 已安装列表 -------------------------------------------------------
 E.IsGhostInstalled
 {
 	if ASEARCH(_argv[0],installedghostlist) >= 0 {
@@ -294,7 +294,7 @@ E.IsGhostInstalled
 	}
 }
 
-//---- 起動中の他のゴースト名取得 -------------------------------------------------------
+//---- 获取启动中的其他人格名 -------------------------------------------------------
 On_otherghostname : void
 {
 	_lastotherghostname = IARRAY
@@ -302,7 +302,7 @@ On_otherghostname : void
 		_lastotherghostname = otherghostname
 	}
 	
-	// 現在起動中のゴーストのリストを作成する
+	// 创建当前启动中的人格列表
 	_n = ARRAYSIZE(reference)
 	otherghostname = IARRAY
 	_ghost = ''
@@ -313,8 +313,8 @@ On_otherghostname : void
 		otherghostname ,= _ghost;
 		
 		_found = ASEARCH(_ghost,_lastotherghostname)
-		if _found >= 0 { //前回もあった
-			_lastotherghostname[_found] = IARRAY //消去
+		if _found >= 0 { //上次也有
+			_lastotherghostname[_found] = IARRAY //删除
 		}
 	}
 	
@@ -346,21 +346,21 @@ OnCacheRestore
 	
 }
 
-//---- トークのトランスレート ------------------------------------------------------------------------
+//---- 对话翻译 ------------------------------------------------------------------------
 OnTranslate
 {
 	_result = reference[0]
 	
-	//\Cは先にフィルタしておく
+	//先过滤\C
 	_dontdel = 0
 	if SUBSTR(_result,0,2) == '\C' {
 		_result = ERASE(_result,0,2)
 		_dontdel = 1
 	}
 	
-	//p2以降のキャラが出てる、かつトークで使われてない＝消去、の処理。
+	//p2以后角色出现且对话中未使用则删除
 	_text = ''
-	if _dontdel { //\Cのときは制御しない
+	if _dontdel { //\C的时候不控制
 		_text = '\C'
 	}
 	else {
@@ -390,7 +390,7 @@ OnTranslate
 	}
 }
 
-//---- 内部トランスレート ------------------------------------------------------------------------
+//---- 内部翻译 ------------------------------------------------------------------------
 OnTranslateInternal
 {
 	_result = _argv[0]
@@ -406,10 +406,10 @@ OnTranslateInternal
 		return
 	}
 	
-	//\e除去
+	//去掉\e
 	_result = REPLACE(_result,'\e','')
 	
-	//内部スクリプトの変換
+	//内部脚本转换
 	if is_special_balloon {
 		_result = REPLACE(_result,'\![*]','\_b[img/check.png,inline]')
 		_result = REPLACE(_result,'\![-]','\_b[img/uncheck.png,inline]')
@@ -440,7 +440,7 @@ OnTranslateInternal
 		_result += _array[_i + 1]
 	}
 	
-	//自動アンカー
+	//自动锚点
 	_result = TranslateAnchor(_result)
 	
 	if bootinit {
@@ -452,15 +452,15 @@ OnTranslateInternal
 	}
 }
 
-//---- がめん ------------------------------------------------------------------------
+//---- 画面 ------------------------------------------------------------------------
 OnDisplayChange : void
 {
-	//---- 変数にディスプレイ解像度と色深度に関する情報を取得
+	//获取显示器分辨率和色深信息到变量
 	displaybpp    = TOINT(reference[0])
 	displaysize   = (TOINT(reference[1]),TOINT(reference[2]))
 }
 
-//---- 現在の情報 ------------------------------------------------------------------------
+//---- 当前信息 ------------------------------------------------------------------------
 OnSHIORI3FW.ChangeSelfInfo : void
 {
 	is_small_balloon = ('minimum' _in_ SHIORI3FW.BalloonName)
@@ -506,7 +506,7 @@ On_basewareversion : void
 	}
 }
 
-//---- ユーザ情報 ------------------------------------------------------------------------
+//---- 用户信息 ------------------------------------------------------------------------
 OnNotifyUserInfo : void
 {
 	if ( STRLEN(reference[0]) != 0 ) {
@@ -531,7 +531,7 @@ On_installedplugin : void
 	}
 }
 
-//---- キャラ名 ------------------------------------------------------------------------
+//---- 角色名 ------------------------------------------------------------------------
 charname
 {
 	switch TOINT(_argv[0]) {
@@ -541,13 +541,13 @@ charname
 	}
 }
 
-//---- さんづけ ----
+//---- 加桑称呼 ----
 username_san
 {
 	E.AddKeisyou(username,'桑')
 }
 
-//---- チェックマーク -------------------------------------------
+//---- 勾选标记 -------------------------------------------
 E.CheckMark
 {
 	if _argv[0] {
@@ -558,7 +558,7 @@ E.CheckMark
 	}
 }
 
-//---- プラグイン状態 -------------------------------------------
+//---- 插件状态 -------------------------------------------
 E.IsPluginInstalled
 {
 	if _argc == 0 {
@@ -573,7 +573,7 @@ E.IsPluginInstalled
 	0
 }
 
-//---- いままでしゃべったトークに追加 -------------------------------------------
+//---- 添加到已说过的话语 -------------------------------------------
 #define TALKLOG_SIZE 20
 
 E.AddLastTalk : void
@@ -593,7 +593,7 @@ E.AddLastTalk : void
 	}
 }
 
-//---- サーフィスの状態初期化 -------------------------------------------
+//---- Surface状态初始化 -------------------------------------------
 E.BootInitScriptBegin
 {
 	if ! config_disp_emilio {
@@ -617,7 +617,7 @@ E.BootInitScriptBegin
 	BatteryTrayIconInit
 }
 
-//---- 朝/昼/夜などをおおざっぱに調べる関数 -------------------------------------------
+//---- 粗略判断早/中/晚等的函数 -------------------------------------------
 GetTimeSlot
 {
 	_time = GETTIME[4] * 100 + GETTIME[5]
@@ -647,7 +647,7 @@ GetTimeSlot
 	}
 }
 
-//---- 季節をおおざっぱに調べる関数 -------------------------------------------
+//---- 粗略判断季节的函数 -------------------------------------------
 GetMonthSlot
 {
 	_mtime = GETTIME[1]
@@ -725,7 +725,7 @@ GetMonthSlotDetail
 	}
 }
 
-//---- あいさつ -------------------------------------------
+//---- 问候 -------------------------------------------
 GetGreeting
 {
 	_slot = GetTimeSlot
@@ -740,7 +740,7 @@ GetGreeting
 	}
 }
 
-//---- 敬称が「さんさん」とかになるのをふせぐ -------------------------------------------
+//---- 防止出现"桑桑"等重复敬称 -------------------------------------------
 E.AddKeisyou
 {
 	if RE_SEARCH(_argv[0],'(大人|君|桑|くん|さま|たん|酱)$') {
@@ -750,7 +750,7 @@ E.AddKeisyou
 	_argv[0] + _argv[1]
 }
 
-//---- 指定したキャラがいまいるか -------------------------------------------
+//---- 检查指定角色是否存在 -------------------------------------------
 E.IsCharExist
 {
 	if _argv[0] == 0 {
@@ -768,13 +768,13 @@ E.IsCharExist
 	0
 }
 
-//---- タイトル表示 -------------------------------------------
+//---- 标题显示 -------------------------------------------
 E.Title
 {
 	"\h\_q\f[bold,true]■\_?%(_argv[0])\_?■\f[default]\n\_q"
 }
 
-//---- 読み込み/終了 ------------------------------------------------------------------------
+//---- 加载/结束 ------------------------------------------------------------------------
 OnSystemLoad.EmilyEX : void
 {
 	mikireflag = 0
@@ -808,7 +808,7 @@ OnSystemLoad.EmilyEX : void
 	bootinit = 0
 	
 	EMGoodsLoad
-	EMInitMenuFileName //いったん仮初期化
+	EMInitMenuFileName //先临时初始化
 }
 
 OnSystemUnload.EmilyEX : void
