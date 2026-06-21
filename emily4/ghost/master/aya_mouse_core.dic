@@ -242,11 +242,11 @@ OnMouseGestureCall0Face_left_right_left_right
 
 OnMouseGestureCallCircle0Face_circle.cw_circle.cw_circle.cw
 {
-	"時計回り3回"
+	"顺时针3圈"
 }
 OnMouseGestureCallCircle0Face_circle.ccw_circle.ccw_circle.ccw
 {
-	"反時計回り3回"
+	"逆时针3圈"
 }
 */
 
