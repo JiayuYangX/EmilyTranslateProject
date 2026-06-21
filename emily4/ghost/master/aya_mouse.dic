@@ -123,7 +123,7 @@ Mouse_Nade1Ear : nonoverlap
 
 Mouse_Nade1Head : nonoverlap
 {
-	"\h\s[0]\u\s[10]…\w5…\w5虽然心请不坏。\w9\w9\s[11]\n但没人的时候也不会有人摸我。\w9\w9\h\s[8]羞涩了ー。\w9\w9\u\s[10]\n\n已经长大了。\e"
+	"\h\s[0]\u\s[10]…\w5…\w5虽然心情不坏。\w9\w9\s[11]\n但没人的时候也不会有人摸我。\w9\w9\h\s[8]羞涩了——。\w9\w9\u\s[10]\n\n已经长大了。\e"
 	"\p2\s[200]\h\s[0]\u\s[10]…\w5…\w5…\w5…。　　\w9…\w5…\w5…\w5…。\w9\n…\w5…\w5…\w5…。　　\w9…\w5…\w5…\w5…。\w9\w9\n（咕～）\w9\w9\n…\w5…\w5…\w5…。　　\w9…\w5…呼喵～。\w9\w9\h\s[5]胜利ー！\w9\w9\p2\s[204]赢了什么啊。\e"
 	"\h\s[0]\1\s[10]喵～。\w9\w9\0\s[8]…\w5…\w5诶？\e"
 
@@ -144,7 +144,7 @@ Mouse_Nade2Head : nonoverlap
 		
 		"\p2\s[206]…\w5…\w5舒服。"
 		
-		"\p2\s[206]やさしい\w5…\w5…\w5手很温暖呢。"
+		"\p2\s[206]温柔的\w5…\w5…\w5手很温暖呢。"
 		
 		"\p[2]\s[208]…\w5…\w5不要啦，\w5拜托…\w5…\w5。"
 		
@@ -166,7 +166,7 @@ Mouse_Nade2Ear : nonoverlap
 		
 		"\p2\s[214]…\w5…\w5摸耳朵太过分了\w5…\w5…"
 		
-		"\p[2]\s[208]く、\w5痒死了…\w5…\w5"
+		"\p[2]\s[208]唔、\w5痒死了…\w5…\w5"
 		"\p[2]\s[214]嗷…\w5…\w5"
 	}
 	else {
@@ -204,7 +204,7 @@ Mouse_Wheel0Face : nonoverlap
 {
 	"\u\s[10]\h\s[5]呼呀呀呀！？\w9\w9\u刚好捏到鼻子了。\e"
 
-	"\p2\s[200]\h\s[0]\u\s[10]脸都…啵噜啵噜~~嗯。\w9\w9\h\s[2]不要！\w5脸都涅软了！\w9\w9\p2\s[205]才这种程度没关系的。\w9\w9\h\s[7]\n\n艾ー\w5米ー\w5利ー\w5欧ー！！\e"
+	"\p2\s[200]\h\s[0]\u\s[10]脸都…啵噜啵噜~~嗯。\w9\w9\h\s[2]不要！\w5脸都捏软了！\w9\w9\p2\s[205]才这种程度没关系的。\w9\w9\h\s[7]\n\n艾——\w5米——\w5利——\w5欧——！！\e"
 	"\t\1\s[10]\0\s[9]哈兮哼嚯！\w9\w9\1什么啊！\w9你在说什么。\w9\w9\0\n\n嚯呀户兮耶哈咦耶，\w5吭嚯哇兮耶嚯！\w9\w9\1\n\n翻译不能。\w5什么东西啊！\w9说啥呢。\w9\w9\0\n\n…\w5…\w5哦呀呼呼兮。\w9\w9\1\s[12]\n\n%(username)，\w5马上给我住手！！\e"
 }
 
@@ -396,7 +396,7 @@ Mouse_DoubleClick0Mouth : nonoverlap
 
 Mouse_DoubleClick0Ponytail : nonoverlap
 {
-	"\h\s[4]い、\w5痛、痛，\w5被扯得好痛。\e"
+	"\h\s[4]呜、\w5痛、痛，\w5被扯得好痛。\e"
 	
 	"\h\s[7]这个，\w5把%(username)的头发也用又拉又卷的方式勒起来吧！\w9\w9\u\s[11]…\w5…\w5…。\e"
 
@@ -527,7 +527,7 @@ Mouse_DoubleClick2Bust : nonoverlap
 		"\p[2]\s[203]…\w5…\w5实在是\w5太舒服了…\w5…\w5啊。"
 	}
 	else {
-		"\p2\s[217]要是想摸的话,去摸我姐啦。\w9\w9\h\s[7]艾・\w5米・\w5利・\w5欧～～～！！\e"
+		"\p2\s[217]要是想摸的话,去摸我姐啦。\w9\w9\h\s[7]艾·米·利·欧～～～！！\e"
 		
 		"\p2\s[207]我不是女生！\e"
 		
@@ -570,7 +570,7 @@ Mouse_Click4newbies_article3
 
 Mouse_Click4newbies_article4
 {
-	'\p[2]\s[200]\u\s[10]\h\s[5]寻找其他角色的方法。\w9\w9\uSSP的角色，\w5有超过1000种。\w9\n他们被称作“Ghost”。\w9\w9\p[2]\s[200]我们只是，\w5SSP的默认角色。\w5这样的角色还有一组。\w9\w9\h\s[3]\n\n这么多根本找不到嘛\w5…\w5…\w9\s[5]\n你是不是这么想的？\w9\w9\u\n\n没关系，\w5“伪春菜Ghost Center”、\w5“Marble Note”、\w5“GHOST TOWN”这些地址，\w5能让你很容易找到他们。\w9\w9\p[2]\s[205]\n\n%username的“我最喜欢的人格”、\w5试着去找一找，我想一定能找到的。\w9\w9\u\n\n上手的方法就是那么简单。\w9\n首先，\w5打开“Ghost Center”\w5点击顶部的“一覧表示”，\w5就能找到自己喜欢的角色了。\w9\w9\h\n\n就是这样！\w9如果想下载谁，\w5点击右侧的“＠＠公開ページ”（XX的发布页）链接。\w9\w9\u\n\n不幸的是，\w5现在有很多人格已经无法下载了，\w5替代方案是，\w5直接去开发者的主页，\w5搜索“Narアーカイブ”（Nar文档）。\w9\n把那个保存下来，\w5再把Nar文件拖到我们身上，就是见证奇迹的时刻。\w9\w9\p[2]\n\n翻译过来就是，\w5新的人物闪亮登场。\w9\w9\h\n\n只要是有趣的人格，\w5一定要试着都叫出来玩哦。\h\_q\n\n[half]\_a[http://ngc.aqrs.jp/]何かゴーストセンター\_a\n\_a[http://marble.tarenari.jp/]Marble Note\_a\n\_a[http://ghosttown.mikage.jp/]GHOST TOWN\_a\e'
+	'\p[2]\s[200]\u\s[10]\h\s[5]寻找其他角色的方法。\w9\w9\uSSP的角色，\w5有超过1000种。\w9\n他们被称作"Ghost"。\w9\w9\p[2]\s[200]我们只是，\w5SSP的默认角色。\w5这样的角色还有一组。\w9\w9\h\s[3]\n\n这么多根本找不到嘛\w5…\w5…\w9\s[5]\n你是不是这么想的？\w9\w9\u\n\n没关系，\w5"伪春菜Ghost Center"、\w5"Marble Note"、\w5"GHOST TOWN"这些地址，\w5能让你很容易找到他们。\w9\w9\p[2]\s[205]\n\n%username的"我最喜欢的人格"、\w5试着去找一找，我想一定能找到的。\w9\w9\u\n\n上手的方法就是那么简单。\w9\n首先，\w5打开"Ghost Center"\w5点击顶部的"一览显示"，\w5就能找到自己喜欢的角色了。\w9\w9\h\n\n就是这样！\w9如果想下载谁，\w5点击右侧的"@@发布页"（XX的发布页）链接。\w9\w9\u\n\n不幸的是，\w5现在有很多人格已经无法下载了，\w5替代方案是，\w5直接去开发者的主页，\w5搜索"NAR存档"（NAR文档）。\w9\n把那个保存下来，\w5再把NAR文件拖到我们身上，就是见证奇迹的时刻。\w9\w9\p[2]\n\n翻译过来就是，\w5新的人物闪亮登场。\w9\w9\h\n\n只要是有趣的人格，\w5一定要试着都叫出来玩哦。\h\_q\n\n[half]\_a[http://ngc.aqrs.jp/]某Ghost Center\_a\n\_a[http://marble.tarenari.jp/]Marble Note\_a\n\_a[http://ghosttown.mikage.jp/]GHOST TOWN\_a\e'
 }
 
 Mouse_Click4newbies_article5
