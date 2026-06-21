@@ -12,7 +12,7 @@ OnTalk
 {
 	if sender != basewarename {
 		if sender == '斗月' {
-			"\u\s[10]\h\s[5]じゃ、\w5お願いされちゃうにょ。\w9\w9\u\s[11]…\w5…\w5誰。\w9\w9\w9\h\c\u\c\h"
+			"\u\s[10]\h\s[5]那么,\w5拜托了呢。\w9\w9\u\s[11]…\w5…\w5谁?\w9\w9\w9\h\c\u\c\h"
 		}
 	}
 	--

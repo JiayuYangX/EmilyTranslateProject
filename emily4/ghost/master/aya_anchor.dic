@@ -109,16 +109,16 @@ OnLib.AnchorWordSelect
 
 OnAnchorWordExec
 {
-	E.Title("解説：%(reference[0])")
+	E.Title("解释：%(reference[0])")
 	--
 	REPLACE(EVAL('アンカー解説：' + reference[0]),'\e','')
 	--
-	'\0\n\n[half]' + メニュー('戻る','OnAnchorWordReturn') + '\e'
+	'\0\n\n[half]' + メニュー('返回','OnAnchorWordReturn') + '\e'
 }
 
 ToolTip_OnAnchorWordExec
 {
-	"!解説：%(reference[2])"
+	"!解释：%(reference[2])"
 }
 
 OnAnchorWordReturn
@@ -167,7 +167,7 @@ OnAnchorWordReturn
 	--
 	_argv[0]
 	--
-	'\0\n[half]' + メニュー('戻る','OpenMenu')
+	'\0\n[half]' + メニュー('返回','OpenMenu')
 }
 
 //解説・「戻る」
@@ -178,21 +178,21 @@ OnAnchorWordReturn
 	
 	_argv[1]
 	--
-	'\0\n\n[half]' + メニュー('戻る','アンカー単語リスト表示')
+	'\0\n\n[half]' + メニュー('返回','アンカー単語リスト表示')
 }
 
 //実際の説明
 アンカー解説：ゴースト
 {
-	"\u\s[10]\p2\s[200]\h\s[5]ボクたちのことだね。\w9\w9\p2\s[204]姉貴、\w5それじゃわからないって。\w9\w9\uまあ、\w5でも見ての通りだからね。\w9\nデスクトップにお邪魔して、\w5おしゃべりしたり、\w5役に立ったりする何かのこと。"
+	"\u\s[10]\p2\s[200]\h\s[5]就是我们啊。\w9\w9\p2\s[204]姐，\w5我不懂诶。\w9\w9\u嘛，\w5你听见和看见的就是。\w9\n骚扰你的桌面，\w5各种聊天，\w5提供实用功能的伪春菜的实体。"
 }
 
 アンカー解説：SERIKO
 {
-	"\h\s[0]\u\s[10]僕たちのアニメーション仕様のことだね。\w9\w9\h\s[24]\u\n\nこんなことしたりできます。\w9\nそしてたいていは、\w5\h\s[40]\uこうなります。\w9\w9\hけふ。\w5けふ。"
+	"\h\s[0]\u\s[10]我们负责动画的显示。\w9\w9\h\s[24]\u\n\n比如这样。\w9\n然后再，\w5\h\s[40]\u变成这样。\w9\w9\h嘿呼。\w5嘿呼。"
 }
 
 アンカー解説：バルーン
 {
-	"\u\s[10]\h\s[5]フキダシのことだね。\w9\w9\u僕たちがこうやって喋っている枠のこと。"
+	"\u\s[10]\h\s[5]负责对话框的模块。\w9\w9\u我们是容纳对话内容的边框。"
 }

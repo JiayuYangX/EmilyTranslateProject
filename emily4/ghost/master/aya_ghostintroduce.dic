@@ -34,7 +34,7 @@ GI_JumpToDistributorMenu
 	--
 	"\n[150]\![*]\q[%(MenuItem('呼びに行ってみる(配布元)')),%(_argv[0])]"
 	--
-	"\n\![X]\q[%(MenuItem('閉じる')),CANCEL_NOTALK]\_q\e"
+	"\n\![X]\q[%(MenuItem('关闭')),CANCEL_NOTALK]\_q\e"
 }
 
 GI_GhostBootMenu
@@ -43,7 +43,7 @@ GI_GhostBootMenu
 	--
 	'\n[150]\![*]\q[' + MenuItem('ゴーストを呼ぶ') + ",OnGIGhostBootMenuExec,%(_argv[0])]"
 	--
-	"\n\![X]\q[%(MenuItem('閉じる')),CANCEL_NOTALK]\_q\e"
+	"\n\![X]\q[%(MenuItem('关闭')),CANCEL_NOTALK]\_q\e"
 }
 
 OnGIGhostBootMenuExec

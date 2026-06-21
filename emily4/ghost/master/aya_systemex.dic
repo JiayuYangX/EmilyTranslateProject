@@ -535,16 +535,16 @@ On_installedplugin : void
 charname
 {
 	switch TOINT(_argv[0]) {
-		'エミリ' //\0
-		'テディ' //\1
-		'エミリオ' //\p2
+		'艾米莉' //\0
+		'泰迪' //\1
+		'艾米利欧' //\p2
 	}
 }
 
 //---- さんづけ ----
 username_san
 {
-	E.AddKeisyou(username,'さん')
+	E.AddKeisyou(username,'桑')
 }
 
 //---- チェックマーク -------------------------------------------
@@ -730,20 +730,20 @@ GetGreeting
 {
 	_slot = GetTimeSlot
 	if 'morning' _in_ _slot {
-		'おはようございます'
+		'早上好~'
 	}
 	elseif _slot == 'lunch' || _slot == 'afternoon' {
-		'こんにちは'
+		'午安哟~'
 	}
 	else {
-		'こんばんは'
+		'晚上好~'
 	}
 }
 
 //---- 敬称が「さんさん」とかになるのをふせぐ -------------------------------------------
 E.AddKeisyou
 {
-	if RE_SEARCH(_argv[0],'(様|君|さん|くん|さま|たん|ちゃん)$') {
+	if RE_SEARCH(_argv[0],'(大人|君|桑|くん|さま|たん|酱)$') {
 		_argv[0]
 		return
 	}

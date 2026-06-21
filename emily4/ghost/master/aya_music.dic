@@ -41,8 +41,8 @@ OnMusicPlayEx
 		}
 	}
 	
-	"\u\s[10]\h\s[5]%(reference[1])の、\w5「%(reference[0])」\w5を再生中だよ。"
-	"\u\s[10]\h\s[27]今かかってるのは\w5…\w5…\w9\s[5]%(reference[1])の、\w5「%(reference[0])」\w5だね。"
+	"\u\s[10]\h\s[5]正在播放 \w5 %(reference[1])的 \w5《%(reference[0])》"
+	"\u\s[10]\h\s[27]现在播放的是\w5…\w5…\w9\s[5]%(reference[1])的\w5《%(reference[0])》\w5吧。"
 	
 	ERASEVAR(info_key)
 	ERASEVAR(info_value)

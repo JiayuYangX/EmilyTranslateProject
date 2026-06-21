@@ -161,8 +161,8 @@ OnMouseGesture
 		when 'down' { _name = '下'; }
 		when 'right_down' { _name = '右下'; }
 		when 'right' { _name = '右'; }
-		when 'circle.cw' { _name = '時計回り'; }
-		when 'circle.ccw' { _name = '反時計回り'; }
+		when 'circle.cw' { _name = '顺时针转'; }
+		when 'circle.ccw' { _name = '逆时针转'; }
 		when 'end' {
 			ERASEVAR('gesture_name_array')
 			ERASEVAR('gesture_circle_array')
@@ -175,7 +175,7 @@ OnMouseGesture
 	_postfix = ''
 	_garray = IARRAY
 	_garray_e = ''
-	if '回り' _in_ _name {
+	if '转' _in_ _name {
 		if ISVAR('gesture_circle_array') == 0 {
 			gesture_circle_array   = IARRAY
 			gesture_circle_array_e = ''
