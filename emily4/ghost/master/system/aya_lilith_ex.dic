@@ -1,58 +1,58 @@
 /*---------------------------------------------------------------------
-	簡易記法変換エンジン「あやりりす/EX」
+	简易记法转换引擎「あやりりす/EX」(AYA Lilith/EX)
 	
-	記法（頭の識別1文字はカスタム可能）
+	记法（开头的标识字符可自定义）
 	
-	エ０２：ほげほげ～
-	テ１２：（ほげほげ｜ふがふが｜ふにゃふにゃ）～
-	テ消　：どこいった～！
-	二人　：バルス！
-	エ０３「こんな書き方もできるよ」
+	エ０２：占位文本～
+	テ１２：（占位文本｜占位文本二｜占位文本三）～
+	テ消　：去哪了～！
+	二人　：爆炸！
+	エ０３「这样写也可以哦」
 	
-	待ち無しエ０５： //\w3　「待無」でも可
-	待ちゼロエ０６： //まったくなし　「待０」でも可
-	待ち多めエ０８： //\w9 x 4　「待多」でも可
-	改行無しエ０２： //改行しない
+	待ち無しエ０５： //\w3　也可用「待無」
+	待ちゼロエ０６： //完全不等待　也可用「待０」
+	待ち多めエ０８： //\w9 x 4　也可用「待多」
+	改行無しエ０２： //不换行
 	クリック待ちエ０４： //\x
-	改行前エ０３： //改行・ウエイト前に表情を変える
+	改行前エ０３： //在换行・等待前改变表情
 	
-	（ユーザ）さん！
+	（用户）你好！
 	
-	＃これはコメントです
+	＃这是注释
 	
 	＠設定：パッシブモード
 	＠設定：クイックセクション
-	＠設定：タイムアウト1000「時間切れ」 //<-単位ミリ秒、時間切れ、を呼出
+	＠設定：タイムアウト1000「时间到」 //<-单位毫秒，调用「时间到」
 	
-	//｜区切り、1つめは表示文字列、以降はイベント名とその追加情報
-	//イベント名＝関数名とできる場合がある
-	//  ・あやりりす環境のすべて、OnChoiceSelectにEVALで細工、Onではじまる文字列
-	＠メニュー：さんぷる１｜Sample1Execute
-	＠半分メニュー：さんぷる２｜さんぷる２実行
-	＠改行多めメニュー：さんぷる３｜OnTest3Exec｜R0
-	＠クリック待ちメニュー：さんぷる４｜さんぷる4実行 //この直後でクリック待ち(\x)実行
+	//｜分隔，第一个为显示字符串，之后为事件名及其附加信息
+	//事件名可与函数名相同
+	//  ・あやりりす环境中的所有、OnChoiceSelect 用 EVAL 加工、以 On 开头的字符串
+	＠メニュー：示例１｜Sample1Execute
+	＠半分メニュー：示例２｜示例２执行
+	＠改行多めメニュー：示例３｜OnTest3Exec｜R0
+	＠クリック待ちメニュー：示例４｜示例4执行 //此后执行点击等待(\x)
 	
-	すべて
+	全部
 	<<"
-	エ０２：てすと！
+	エ０２：测试！
 	">>
-	のように囲むこと（AYA複数行記法）
+	这样括起来（AYA 多行记法）
 	
-	ランダムトークのみ
+	仅随机对话
 	<<'
-	テ１０：てすとだね。
+	テ１０：测试呢。
 	'>>
-	のようになります。(高速化のため)
+	如此使用（为了高速化）
 	
-	補助関数 (通常は細工不要)
-	あやりりすEXSurfaceTranslate(？側,サーフィス番号)
-	 -> 返りサーフィス番号
-	あやりりすEXSakuraScript外部トランスレータ(スクリプト)
-	 -> 返り変換後スクリプト
+	辅助函数（通常无需加工）
+	あやりりすEXSurfaceTranslate(？侧,Surface编号)
+	 -> 返回Surface编号
+	あやりりすEXSakuraScript外部トランスレータ(脚本)
+	 -> 返回转换后脚本
 	
 ---------------------------------------------------------------------*/
 
-//---- あやりりすEX初期化 --------------------------------------------------------------
+//---- AYA Lilith EX 初始化 --------------------------------------------------------------
 OnSystemLoad.AAA_AYLEX
 {
 	timeout_label = ''
@@ -113,12 +113,12 @@ OnSystemLoad.AAA_AYLEX
 	AYLex_aylex_translate_name = 'あやりりすEXPreTranslate'
 	AYLex_aylex_translate_found = ISFUNC(AYLex_aylex_translate_name)
 	
-	//flagshipでつかう
+	//flagship 中使用
 	AYLex_surface_find_pattern_char = '[0-9.,０-９．，消bｂバ]'
 	
 }
 
-//---- あやりりすEXデータ開放 --------------------------------------------------------------
+//---- AYA Lilith EX 数据释放 --------------------------------------------------------------
 OnSystemUnload.AAA_AYLEX
 {
 	_erasevar = <<'
@@ -148,7 +148,7 @@ OnSystemUnload.AAA_AYLEX
 	
 }
 
-//---- あやりりすEXトランスレータ --------------------------------------------------------------
+//---- AYA Lilith EX 转换器 --------------------------------------------------------------
 OnTranslateInternal.AAA_AYLEX
 {
 	if SUBSTR(SHIORI3FW.Eventid,0,3) == 'On_' {
@@ -158,7 +158,7 @@ OnTranslateInternal.AAA_AYLEX
 	ProcessSpecialSyntax(_argv[0])
 }
 
-//---- テキストのみフィルタ --------------------------------------------------------------
+//---- 纯文本过滤器 --------------------------------------------------------------
 AYALilithEX.TextOnlyTranslator
 {
 	_string = RE_SPLIT(_argv[0],'\\(\\|q\[.*?\]\[.*?\]|[!&8cfijmpqsn]\[.*?\]|[-*+014567bcehntuvxz]|_[ablmsuvw]\[.*?\]|__(t|[qw]\[.*?\])|_[!?+nqsV]|[sipw][0-9])')
@@ -178,11 +178,11 @@ AYALilithEX.TextOnlyTranslator
 	_tr
 }
 
-//---- テキスト変換部（句読点ウエイト） --------------------------------------------------------------
+//---- 文本转换部分（标点等待） --------------------------------------------------------------
 AYALilithEX.TextOnlyTranslatorFunc
 {
-	//_argv[0] = 置換対象テキスト
-	//_argv[1] = クイックセクション内か否か
+	//_argv[0] = 替换目标文本
+	//_argv[1] = 是否在快速章节内
 	
 	_text = _argv[0]
 	
@@ -196,7 +196,7 @@ AYALilithEX.TextOnlyTranslatorFunc
 	_text
 }
 
-//---- ユーザ名処理 --------------------------------------------------------------
+//---- 用户名处理 --------------------------------------------------------------
 AYALilithEX.UserNameFunc
 {
 	_fname = 'ユーザ名処理'
@@ -208,19 +208,19 @@ AYALilithEX.UserNameFunc
 	}
 }
 
-//---- チェイン・選択 --------------------------------------------------------------
+//---- 连锁・选择 --------------------------------------------------------------
 ProcessSpecialSyntax
 {
 	_txt = _argv[0]
 	
-	_arr = RE_SPLIT(_txt,'\r\n[=＝]{4,}\r\n',2) //=====区切りでchain
+	_arr = RE_SPLIT(_txt,'\r\n[=＝]{4,}\r\n',2) //按 ===== 分隔进行连锁
 	if STRLEN(_arr[1]) {
 		SHIORI3FW.StartChainTalkScriptDirect(_arr[1])
 	}
 	
 	_txt = _arr[0]
 	
-	_arr = RE_SPLIT(_txt,'\r\n[-―ー－]{4,}\r\n') //-----区切りで複数トークRAND選択
+	_arr = RE_SPLIT(_txt,'\r\n[-―ー－]{4,}\r\n') //按 ----- 分隔进行多对话随机选择
 
 	if GETTYPE(_arr) == 4 {
 		_txt = _arr[RAND(ARRAYSIZE(_arr))]
@@ -232,7 +232,7 @@ ProcessSpecialSyntax
 	ProcessAYALilithSyntax(_txt)
 }
 
-//---- あやりりすEX記法サブ（カッコで囲まれた補助記法） --------------------------------------------------------------
+//---- AYA Lilith EX 记法子程序（括号括起的辅助记法） --------------------------------------------------------------
 ProcessAYALilithSyntaxSub
 {
 	_text = _argv[0]
@@ -250,7 +250,7 @@ ProcessAYALilithSyntaxSub
 		_text = ERASE(_text,_p,_l)
 
 		_hist = ''
-		if SUBSTR(_x,0,1) == 'H' { //履歴
+		if SUBSTR(_x,0,1) == 'H' { //历史
 			_histnum = TOINT(SUBSTR(_x,1,9999))
 			_hist = AYLex_Kakko_History[_histnum-1]
 		}
@@ -264,7 +264,7 @@ ProcessAYALilithSyntaxSub
 	_text
 }
 
-//---- あやりりすEX記法かどうか判定 ----------------------------------------------------------
+//---- 判断是否为 AYA Lilith EX 记法 ----------------------------------------------------------
 IsAYALilithEXSyntax
 {
 	_txtarray  = IARRAY
@@ -278,7 +278,7 @@ IsAYALilithEXSyntax
 	}
 }
 
-//---- あやりりすEX記法メイン --------------------------------------------------------------
+//---- AYA Lilith EX 记法主程序 --------------------------------------------------------------
 ProcessAYALilithSyntax
 {
 	timeout_label = ''
@@ -349,8 +349,8 @@ ProcessAYALilithSyntax
 				_txt = _txt_exit
 			}
 
-			if RE_SEARCH(_txt,'^[#＃]') { //＃コメント
-				; //なにもしない
+		if RE_SEARCH(_txt,'^[#＃]') { //＃注释
+			; //什么都不做
 			}
 			elseif RE_SEARCH(_txt,'^(.*?)([：＜].*?|[｢「].*?[」｣]?)$') {
 				_cmd_orig = RE_GETSTR[1]
@@ -398,15 +398,15 @@ ProcessAYALilithSyntax
 					_else_cond_result = 0
 				}
 				
-				//条件分岐ONならGO (からっぽの場合含む)
+				//条件分支 ON 则 GO（包含空的情况）
 				if _cond_result {
-					if RE_SEARCH(_cmd_orig,'^[@＠](.*?)スクリプト') { //＠スクリプト：ほげほげ -> スクリプトそのまま出力
+					if RE_SEARCH(_cmd_orig,'^[@＠](.*?)スクリプト') { //＠脚本：内容 -> 原样输出脚本
 						_script += _txt_orig
 					}
-					elseif RE_SEARCH(_cmd_orig,'^[@＠](.*?)メニューアイコン(.*?)$') { //＠メニューアイコン：ほげほげ
+					elseif RE_SEARCH(_cmd_orig,'^[@＠](.*?)メニューアイコン(.*?)$') { //＠菜单图标：内容
 						メニューアイコン設定(_txt_orig)
 					}
-					elseif RE_SEARCH(_cmd_orig,'^[@＠](.*?)メニュー(.*?)$') { //＠メニュー：ほげほげ
+					elseif RE_SEARCH(_cmd_orig,'^[@＠](.*?)メニュー(.*?)$') { //＠菜单：内容
 						_cmd = RE_REPLACE(RE_GETSTR[1] + RE_GETSTR[2],'[　 \t]','')
 						_txt = _txt_orig
 						
@@ -416,7 +416,7 @@ ProcessAYALilithSyntax
 							}
 							_script += '\_n'
 							if TOINT(_talk_done_side[_side]) != 0 {
-								_script += '\n[half]' //\nは後で入る
+								_script += '\n[half]' //\n 之后会插入
 							}
 						}
 						
@@ -466,7 +466,7 @@ ProcessAYALilithSyntax
 						_talk_done_side[_side] = 1
 						_menu_flag = 1
 					}
-					elseif RE_SEARCH(_cmd_orig,'^[#＃@＠]設定') { //＠設定：ほげほげ
+					elseif RE_SEARCH(_cmd_orig,'^[#＃@＠]設定') { //＠設定：示例
 						_txt = RE_REPLACE(_txt_orig,'[　 \t]','')
 						
 						if 'クイック' _in_ _txt {
@@ -593,15 +593,15 @@ ProcessAYALilithSyntax
 								if _cmd_waitzero {
 									; //NOOP
 								}
-								elseif _cmd_wait { //待ち無し
+								elseif _cmd_wait { //无等待
 									_side_wait += "\w3"
 									_side_wait_short += "\w2"
 								}
-								elseif _cmd_morewait { //待ち多め
+								elseif _cmd_morewait { //多等待
 									_side_wait += "\w9\w9\w9\w9"
 									_side_wait_short += "\w9\w9"
 								}
-								else { //待ち普通
+								else { //普通等待
 									_side_wait += "\w9\w9"
 									_side_wait_short += "\w9"
 								}
@@ -646,7 +646,7 @@ ProcessAYALilithSyntax
 							}
 
 							if _pattern_found {
-								//NOOP - ループ内実行済み
+								//NOOP - 已在循环内执行过
 							}
 							else {
 								break
@@ -672,7 +672,7 @@ ProcessAYALilithSyntax
 						
 						_talk = ProcessAYALilithSyntaxSub(_main,_quick)
 						
-						//----------Sync-------------
+						//----------同步-------------
 						if _cmd_sync || _cmd_double {
 							_side_changed_flag = 1
 							if _cmd_sync {
@@ -715,7 +715,7 @@ ProcessAYALilithSyntax
 								_side_change = _side_change_before + _side_change
 							}
 						}
-						//-----------NoSync---------------
+						//-----------非同步---------------
 						else {
 							_side_changed_flag = _side_old != _side
 							if TOINT(_talk_done_side[_side]) != 0 {
@@ -834,7 +834,7 @@ ProcessAYALilithSyntax
 	if _timeout_value {
 		_script = "\![set,balloontimeout,%(_timeout_value)]\![set,choicetimeout,%(_timeout_value)]" + _script
 	}
-	//これが必ず最後
+	//这必须是最后
 	if _init_script != '' {
 		_script = _init_script + _script
 	}
@@ -844,7 +844,7 @@ ProcessAYALilithSyntax
 	_script
 }
 
-//---- サーフィス定義 --------------------------------------------------------------
+//---- Surface定义 --------------------------------------------------------------
 ProcessAYALilithSurfaceDef
 {
 	_spat = _argv[0]
@@ -890,7 +890,7 @@ ProcessAYALilithSurfaceDef
 	_side_change
 }
 
-//---- 条件分岐 --------------------------------------------------------------
+//---- 条件分支 --------------------------------------------------------------
 ProcessAYALilithCondBranch
 {
 	_t = _argv[0]
@@ -929,15 +929,15 @@ ReplaceAbbrevSyntax
 	_t
 }
 
-//---- テスト用イベント --------------------------------------------------------------
+//---- 测试用事件 --------------------------------------------------------------
 OnTextDrop
 {
 	REPLACE(reference.raw[0],C_BYTE1,C_CRLF)
 }
 
-//---- メニュー系 --------------------------------------------------------------
+//---- 菜单相关 --------------------------------------------------------------
 
-//エスケープ
+//转义
 エスケープ
 {
 	_r = _argv[0]
@@ -959,7 +959,7 @@ HTMLエスケープ
 	_r
 }
 
-//アイコン設定
+//图标设定
 メニューアイコン設定
 {
  	if '標準' _in_ _argv[0] {
@@ -980,7 +980,7 @@ HTMLエスケープ
 	}
 }
 
-//通常メニュー
+//普通菜单
 メニュー
 {
 	メニューアイコン() + '\q['
@@ -997,7 +997,7 @@ HTMLエスケープ
 	']'
 }
 
-//半分メニュー
+//半菜单
 半分メニュー開始
 {
 	half_menu_counter = 0
@@ -1049,7 +1049,7 @@ HTMLエスケープ
 	half_menu_counter++
 }
 
-//---- 雑用系 --------------------------------------------------------------
+//---- 杂项 --------------------------------------------------------------
 
 AYLex_DEFAULT_SURFACE_Func
 {

@@ -1,13 +1,13 @@
 //******************************************************************************
-//SHIORI/3.0制御スクリプト for YAYA
-//オプション関数
+//SHIORI/3.0 控制脚本 for YAYA
+//可选函数
 //******************************************************************************
 
 #define	ESCAPE_TAG_1	CHR(0x3,0x3)
 #define	ESCAPE_TAG_2	CHR(0x4,0x4)
 
 //******************************************************************************
-//初期化・後始末
+//初始化・清理
 //******************************************************************************
 
 OnSystemLoad.SHIORI3FW.OPTIONAL
@@ -22,13 +22,13 @@ OnSystemUnload.SHIORI3FW.OPTIONAL
 }
 
 //******************************************************************************
-//さくらスクリプトタグ除去
+//Sakura Script 标签去除
 //******************************************************************************
 
 //------------------------------------------------------------------------------
-//　関数名：SHIORI3FW.EscapeDangerousTags
-//　機能　：危険なタグのみをエスケープ（\付加）する。
-//　引数　：argv0＝テキスト
+//　函数名：SHIORI3FW.EscapeDangerousTags
+//　功能　：仅对危险标签进行转义（添加 \）。
+//　参数　：argv0＝文本
 //------------------------------------------------------------------------------
 SHIORI3FW.EscapeDangerousTags{
 	_txt=_argv[0]
@@ -47,9 +47,9 @@ SHIORI3FW.EscapeDangerousTags{
 }
 
 //------------------------------------------------------------------------------
-//　関数名：SHIORI3FW.EscapeAllTags
-//　機能　：全てのさくらスクリプトタグをエスケープ（\付加）する。
-//　引数　：argv0＝テキスト
+//　函数名：SHIORI3FW.EscapeAllTags
+//　功能　：对所有 Sakura Script 标签进行转义（添加 \）。
+//　参数　：argv0＝文本
 //------------------------------------------------------------------------------
 SHIORI3FW.EscapeAllTags{
 	_txt=_argv[0]
@@ -63,9 +63,9 @@ SHIORI3FW.EscapeAllTags{
 }
 
 //------------------------------------------------------------------------------
-//　関数名：SHIORI3FW.TranslateSystemChar
-//　機能　：演算子などシステム予約文字を別のものに置き換える
-//　引数　：argv0＝テキスト　argv1＝置き換え対象（省略時_）
+//　函数名：SHIORI3FW.TranslateSystemChar
+//　功能　：将运算符等系统预留字符替换为其他字符
+//　参数　：argv0＝文本　argv1＝替换目标（省略时为 _）
 //------------------------------------------------------------------------------
 SHIORI3FW.TranslateSystemChar
 {
@@ -79,8 +79,8 @@ SHIORI3FW.TranslateSystemChar
 }
 
 //------------------------------------------------------------------------------
-//　関数名：SHIORI3FW.InitBalloons
-//　機能　：バルーン完全初期化スクリプトを自動生成する
+//　函数名：SHIORI3FW.InitBalloons
+//　功能　：自动生成气球完全初始化脚本
 //------------------------------------------------------------------------------
 SHIORI3FW.InitBalloons
 {
@@ -95,12 +95,12 @@ SHIORI3FW.InitBalloons
 }
 
 //******************************************************************************
-// FMO関連
+// FMO 相关
 //******************************************************************************
 //------------------------------------------------------------------------------
-//関数名：SHIORI3FW.IsGhostExist(ゴースト名（sakuraname）[,fmoname])
-//機能　：指定されたゴーストが存在するか調べる
-//　　　　存在しなければ0、存在すれば1を返す
+//函数名：SHIORI3FW.IsGhostExist(人格名（sakuraname）[,fmoname])
+//功能　：检查指定的人格是否存在
+//　　　　不存在则返回 0，存在则返回 1
 //------------------------------------------------------------------------------
 SHIORI3FW.IsGhostExist
 {
@@ -116,22 +116,22 @@ SHIORI3FW.IsGhostExist
 
 
 //------------------------------------------------------------------------------
-//関数名：SHIORI3FW.RefreshFMOTable(FMO名称,無視するエントリのHWND)
-//機能　：READFMOによってFMOテーブルを作る。
+//函数名：SHIORI3FW.RefreshFMOTable(FMO 名称,忽略的条目 HWND)
+//功能　：通过 READFMO 创建 FMO 表。
 /*
-FMOはキャッシュされ、変わっていなければ解析は行われない。
-FMO名称を省略すると自動的に"Sakura"になる。
-無視するエントリのHWNDを省略すると、SHIORI3FW.HWnd[0] 変数が利用される。
-（つまり自動的に自身の情報は含まれなくなる）
+FMO 会被缓存，未发生变化则不进行解析。
+FMO 名称省略时将自动使用 "Sakura"。
+忽略的条目 HWND 省略时，将使用 SHIORI3FW.HWnd[0] 变量。
+（即自动不包含自身的信息）
 
-グローバル変数：SHIORI3FW.FMOCache		FMOの内容のキャッシュ（単純ダンプ）
-グローバル変数：SHIORI3FW.FMOTable		FMOのテーブル（簡易配列。内容は以下）
+全局变量：SHIORI3FW.FMOCache		FMO 内容的缓存（简单转储）
+全局变量：SHIORI3FW.FMOTable		FMO 的表（简易数组。内容如下）
 id|name|keroname|hwnd|kerohwnd|path|ghostpath,
 id|name|keroname|hwnd|kerohwnd|path|ghostpath,
 ...
 
-グローバル変数：SHIORI3FW.SakuraNameList	sakuranameを列挙した汎用配列
-また、いわゆる「非ゴースト」FMOエントリ（一時起動等）はこの時点で排除される。
+全局变量：SHIORI3FW.SakuraNameList	列举 sakuraname 的通用数组
+另外，所谓的「非人格」FMO 条目（临时启动等）在此处会被排除。
 */
 //------------------------------------------------------------------------------
 SHIORI3FW.RefreshFMOTable : void
@@ -144,11 +144,11 @@ SHIORI3FW.RefreshFMOTable : void
 	_result=READFMO(_fmoname)
 	
 	if SHIORI3FW.FMOCache == _result {
-		//変わっていなければ即座に戻る
+		//未发生变化则立即返回
 		return
 	}
 
-	//FMOの内容をキャッシュする
+	//缓存 FMO 的内容
 	SHIORI3FW.FMOCache=_result
 	SHIORI3FW.FMOTable=''
 	SHIORI3FW.SakuraNameList=IARRAY
@@ -158,11 +158,11 @@ SHIORI3FW.RefreshFMOTable : void
 		_ignorehwnd = SHIORI3FW.HWnd[0]
 	}
 
-	//\r\nで分割
+	//按 \r\n 分割
 	_array = SPLIT(_result,C_CRLF)
 	_arraynum=ARRAYSIZE(_array)
 
-	//変数初期化	
+	//变量初始化	
 	_fmotable_temp=''
 	_id=''
 	_oldid=''
@@ -173,21 +173,21 @@ SHIORI3FW.RefreshFMOTable : void
 	_path=''
 	_ghostpath=''
 
-	//結果を擬似２次配列にストア
+	//将结果存储为伪二维数组
 	//ssp_fmo_header_000024dc_005c094e.hwnd,6031694
 	//<------------------id----------> key  value
 	for _i=0 ; _i<_arraynum-1 ; _i++ {
-		//一時起動ゴーストかどうか？
+		//是否是临时启动的人格？
 		_buf=_array[_i]
 		_id=_buf[0,'.']
 		if 'SSTPVIEWER-' _in_ _id  || 'ssp_fmo_header_dummyentry' _in_ _id || 'SSSB' _in_ _id
 		{
-			//一時起動なのでなにもしない
+			//临时启动，不做任何处理
 		}else{
 			if _oldid == '' {
 				_oldid = _id
 			}
-			//IDが変わったら一時保存を書き出し
+			//ID 发生变化时将临时保存写入
 			if _oldid != _id {
 				_fmotable_temp+="%(_oldid)|%(_name)|%(_keroname)|%(_hwnd)|%(_kerohwnd)|%(_path)|%(_ghostpath),"
 				_oldid = _id
@@ -202,7 +202,7 @@ SHIORI3FW.RefreshFMOTable : void
 			_key=_kvpair[0,C_BYTE1]
 			_val=_kvpair[1,C_BYTE1]
 			
-			//各値を一時保存
+			//临时保存各值
 			case _key {
 			when 'hwnd'		{_hwnd=_val}
 			when 'name'		{_name=_val}
@@ -213,10 +213,10 @@ SHIORI3FW.RefreshFMOTable : void
 			}
 		}
 	}
-	//最後のエントリを書き出し
+	//写入最后一条条目
 	_fmotable_temp += "%(_id)|%(_name)|%(_keroname)|%(_hwnd)|%(_kerohwnd)|%(_path)|%(_ghostpath)"
 	
-	//無視するHWNDを取り除き、同時にSakuraNameListを作成
+	//移除忽略的 HWND，同时创建 SakuraNameList
 	_count_temp=ARRAYSIZE(_fmotable_temp)
 	for _i=0;_i<_count_temp;_i++ {
 		_tablestr=_fmotable_temp[_i]
@@ -227,23 +227,23 @@ SHIORI3FW.RefreshFMOTable : void
 		}
 	}
 	
-	//最後がカンマなら取り除く
+	//如果末尾是逗号则移除
 	if SUBSTR(SHIORI3FW.FMOTable,STRLEN(SHIORI3FW.FMOTable)-1,1)==',' {
 		SHIORI3FW.FMOTable=SUBSTR(SHIORI3FW.FMOTable,0,STRLEN(SHIORI3FW.FMOTable)-1)
 	}
 }
 
 //******************************************************************************
-// テキスト処理
+// 文本处理
 //******************************************************************************
 
 //------------------------------------------------------------------------------
-//　関数名：SHIORI3FW.MakeJustText
-//　機能　：指定した長さになるまでスペースを埋める / 省略する
-//　引数　：argv0＝テキスト　argv1＝文字数（半角換算）
+//　函数名：SHIORI3FW.MakeJustText
+//　功能　：填充空格至指定长度 / 省略
+//　参数　：argv0＝文本　argv1＝字符数（半角换算）
 //------------------------------------------------------------------------------
 
-//---- 後ろにスペースを補完する関数 (from和音)
+//---- 在后面补全空格的函数（from 和音）
 SHIORI3FW.MakeLongText
 {
 	_menuitem = _argv[0]
@@ -260,7 +260,7 @@ SHIORI3FW.MakeLongText
 	_menuitem
 }
 
-//---- 適当な長さで切る -------------------------------------------
+//---- 按适当长度截断 -------------------------------------------
 SHIORI3FW.MakeShortText
 {
 	if _argc < 2 {
@@ -278,7 +278,7 @@ SHIORI3FW.MakeShortText
 	}
 	
 	_num = STRLEN(_src)
-	_lendiff = 0 //後で保存するためにスコープを一つ下げるためのダミー代入
+	_lendiff = 0 	//为了之后保存而降低一层作用域的虚拟赋值
 	
 	while 1 {
 		_text = SUBSTR(_argv[0],0,_num)
@@ -303,11 +303,11 @@ SHIORI3FW.MakeShortText
 	_text
 }
 
-//---- 長さをきっちり調節
+//---- 精确调整长度
 SHIORI3FW.MakeJustText
 {
 	_text = SHIORI3FW.MakeLongText(_argv[0],_argv[1])
-	if _text != _argv[0] { //短すぎた
+	if _text != _argv[0] { 	//过短了
 		_text
 		return
 	}
@@ -317,31 +317,31 @@ SHIORI3FW.MakeJustText
 }
 
 //******************************************************************************
-// その他
+// 其他
 //******************************************************************************
 
-//---- HTTPコード->日本語 _argv[0]にコード
+//---- HTTP 代码 -> 中文 _argv[0] 为代码
 
 SHIORI3FW.HTTPCodeToMessage
 {
 	case _argv[0] {
 		when '403' {
-			'アクセス拒否'
+			'访问被拒'
 		}
 		when '404','410' {
-			'ファイル無し'
+			'文件不存在'
 		}
 		when '500','502','503' {
-			'サーバ側の不調'
+			'服务器异常'
 		}
 		when 'timeout' {
-			'タイムアウト'
+			'超时'
 		}
 		when 'fileio' {
-			'ファイル書き込みエラー'
+			'文件写入错误'
 		}
 		when 'artificial' {
-			'手動中断'
+			'手动中断'
 		}
 	}
 }
