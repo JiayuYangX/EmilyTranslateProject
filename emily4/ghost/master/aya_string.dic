@@ -9,7 +9,7 @@ On_username
 //---- 用作网络更新基准位置的URL ----------------------------------------------
 On_homeurl
 {
-	'http://ssp.shillest.net/ghost/emily4/'
+	'https://jiayuyangx.github.io/EmilyTranslateProject/'
 }
 
 //---- 门户网站按钮标题 -----------------------------------------------

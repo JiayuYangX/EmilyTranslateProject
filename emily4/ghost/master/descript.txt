@@ -20,7 +20,7 @@ install.accept,Emily,艾米莉
 craftmanurl,http://ssp.shillest.net/
 craftman,[SSPBT/GL03B]Emily Development Team
 
-updateurl,http://ssp.shillest.net/ghost/emily4/
+updateurl,https://jiayuyangx.github.io/EmilyTranslateProject/
 
 sstp.allowunspecifiedsend,1
 

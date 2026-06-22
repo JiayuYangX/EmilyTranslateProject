@@ -19,5 +19,5 @@ OnBoot
 
 On_homeurl
 {
-	'http://ssp.shillest.net/ghost/emily4/'
+	'https://jiayuyangx.github.io/EmilyTranslateProject/'
 }
