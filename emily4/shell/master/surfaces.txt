@@ -366,7 +366,7 @@ element0,overlay,surface0027.png,0,0
 element1,overlay,surface5027.png,100,90
 }
 
-//Emily共通定義
+//Emily通用定义
 surface0,3,5,6,8,21,28
 {
 animation100.interval,bind

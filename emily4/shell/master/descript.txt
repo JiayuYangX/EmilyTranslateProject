@@ -50,8 +50,8 @@ menu.separator.color.r,128
 menu.separator.color.g,128
 menu.separator.color.b,128
 
-//着せ替え定義
-sakura.bindgroup100.name,アクセサリ,めがね
+//换装定义
+sakura.bindgroup100.name,饰品,眼镜
 sakura.bindgroup100.default,0
 
 //sakura.menu,auto
