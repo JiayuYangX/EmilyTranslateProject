@@ -1,11 +1,11 @@
 ﻿/*-------------------------------------------------------------------------------------------
  *  Tuned system dictionary for SHIORI/3.0 "EP4/FullThrottle"
  *  
- *  ゴースト切換え辞書コア
+ *  人格切换辞书核心
  * ------------------------------------------------------------------------------------------
 */
 
-//**** ゴースト切り替え処理 **********************************************************
+//**** 人格切换处理 **********************************************************
 
 #globaldefine {{START_CHANGE { case _argv[0] {
 #globaldefine }}END_CHANGE } }
@@ -17,14 +17,14 @@
 #globaldefine EMS_GC_CALLCOMPLETE 4
 #globaldefine EMS_GC_CLOSED       5
 
-//---- 呼び出し処理 -----------------------------------------------------------
+//---- 调用处理 -----------------------------------------------------------
 GhostChangeCallCore
 {
 	_script = ''
 	change_plain_talk = SHIORI3FW.RemoveAllTags(reference[1])
 	SHIORI3FW.RegisterTempVar('change_plain_talk')
 	
-	//フルネームで探索
+	//以全名搜索
 	_fname = SHIORI3FW.TranslateSystemChar(CUTSPACE(reference[2]))
 	if STRLEN(_fname) {
 		if ISFUNC("OnGhostChangeCall_%(_fname)") {
@@ -36,7 +36,7 @@ GhostChangeCallCore
 		}
 	}
 	
-	//なければSakura名
+	//如无则用Sakura名
 	_sname = SHIORI3FW.TranslateSystemChar(CUTSPACE(reference[0]))
 	if STRLEN(_sname) {
 		if ISFUNC("OnGhostChangeCall_%(_sname)") {
@@ -48,7 +48,7 @@ GhostChangeCallCore
 		}
 	}
 	
-	//それもなければ変換処理を介したもの
+	//再无则通过转换处理
 	if ISFUNC('GhostNameConvert') {
 		_gname = EVAL('GhostNameConvert(_sname)')
 		if STRLEN(_gname) && ISFUNC("OnGhostChangeCall_%(_gname)") {
@@ -60,7 +60,7 @@ GhostChangeCallCore
 		}
 	}
 	
-	//それもなければ標準
+	//再无则用标准
 	if ISFUNC('OnGhostChangeCallNormal') {
 		_script = EVAL("OnGhostChangeCallNormal(%(_argv[0]))")
 		if _script && STRLEN(_script) {
@@ -70,7 +70,7 @@ GhostChangeCallCore
 	}
 }
 
-//---- 他のゴーストへ切り替え -----------------------------------------------------------
+//---- 切换到其他人格 -----------------------------------------------------------
 OnGhostChanging
 {
 	S.DontExecuteBaseID = 1
@@ -85,7 +85,7 @@ OnGhostChanging
 	_script + '\w9\w9\e'
 }
 
-//---- 他のゴーストから切り替り ---------------------------------------------------------
+//---- 从其他人格切换过来 ---------------------------------------------------------
 OnGhostChanged
 {
 	S.DontExecuteBaseID = 1
@@ -99,7 +99,7 @@ OnGhostChanged
 	}
 }
 
-//---- 他のゴーストを呼び出し -----------------------------------------------------------
+//---- 调用其他人格 -----------------------------------------------------------
 OnGhostCalling
 {
 	S.DontExecuteBaseID = 1
@@ -107,7 +107,7 @@ OnGhostCalling
 	_script
 }
 
-//---- 他のゴーストから呼び出された ---------------------------------------------------------
+//---- 被其他人格调用 ---------------------------------------------------------
 OnGhostCalled
 {
 	S.DontExecuteBaseID = 1
@@ -121,7 +121,7 @@ OnGhostCalled
 	}
 }
 
-//---- 他のゴーストの呼び出しが終わった ---------------------------------------------------------
+//---- 其他人格的调用结束 ---------------------------------------------------------
 OnGhostCallComplete
 {
 	S.DontExecuteBaseID = 1
@@ -136,9 +136,9 @@ OnGhostCallCompleteDelayEvent
 	reference[0]
 }
 
-//---- 他のゴーストが終了した ---------------------------------------------------------
-// aya_systemex.dicから飛んでくる
-// otherghostnameの監視による
+//---- 其他人格已退出 ---------------------------------------------------------
+// 从aya_systemex.dic飞来
+// 通过监视otherghostname触发
 OnEMGhostClosed
 {
 	if ! config_ghostclose_event_disable && ! ghostcloseevent_notified {

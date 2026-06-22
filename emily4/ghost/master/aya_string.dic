@@ -37,28 +37,28 @@ On_sakura.portalsites_EX : array
 	'CROW						| http://crow.aqrs.jp/									| '
 //	'S Software					| http://www.s-software.net/							| '
 //	'Usada Sakura				| http://usada.sakura.vg/								| '
-	'偽林檎						| http://ccm.sherry.jp/									| '
+	'伪林檎						| http://ccm.sherry.jp/									| '
 	'ninix-aya					| http://ninix-aya.osdn.jp/								| '
 	'-							|														| '
 	'Ghost Center			    | http://ngc.aqrs.jp/									| '
 	'GHOST TOWN					| http://ghosttown.mikage.jp/							| '
 	'-							|														| '
 	'Yet Another AYA			| http://ms.shillest.net/yaya.xhtml						| '
-	'華和梨(KAWARI)				| http://kawari.sourceforge.net/						| '
-	'里々(SATORI)改造版			| http://ms.shillest.net/satoriya.xhtml					| '
-	'なゆきwith里珠				| http://nayuki.sherry.jp/								| '
-	'灯							| http://le.silk.to/									| '
+	'华和梨(KAWARI)				| http://kawari.sourceforge.net/						| '
+	'里里(SATORI)改版				| http://ms.shillest.net/satoriya.xhtml					| '
+	'Nayuki with 里珠				| http://nayuki.sherry.jp/								| '
+	'灯                        	| http://le.silk.to/									| '
 	'-							|														| '
-	'浮子屋本舗					| http://ukiya.sakura.ne.jp/							| '
+	'浮子屋本铺					| http://ukiya.sakura.ne.jp/							| '
 	"SSTP-Viewer's STREET		| http://sakura.nanika.jp/sstpviewer/					| "
 	'-							|														| '
 	'SSTP BOTTLE				| http://bottle.mikage.to/								| '
 //	'绝密生产据点「gunnyori」	| http://k-a2shi.hp.infoseek.co.jp/ukagaka/				| '
 	'-							|														| '
-	'葦野 香さん				|														| '
-	'ししゃも屋さん				|														| '
-	'Hiro.Sさん					|														| '
-	'またくさん					|														| '
+	'苇野 香桑					|														| '
+	'柳叶鱼屋桑					|														| '
+	'Hiro.S桑					|														| '
+	'Mataku桑					|														| '
 }
 
 //---- 本体的推荐网站按钮标题 -----------------------------------------
@@ -192,4 +192,3 @@ On_useorigin1
 {
 	'0'
 }
-

@@ -1,4 +1,4 @@
-﻿///////// バッテリー残量表示機能
+﻿///////// 电池余量显示功能
 OnSystemLoad.BATT
 {
 	battery_percent = -1
@@ -17,7 +17,7 @@ OnSystemUnload.BATT
 //％,time,offline/online(/backup)
 OnBatteryNotify : void
 {
-	if reference[2] != 'online' && reference[2] != 'offline' { //状態不明
+	if reference[2] != 'online' && reference[2] != 'offline' { //状态不明
 		return
 	}
 	
@@ -25,7 +25,7 @@ OnBatteryNotify : void
 	battery_percent = TOINT(reference[0])
 	battery_time = TOINT(reference[1])
 	
-	if battery_percent < 0 { //状態不明
+	if battery_percent < 0 { //状态不明
 		return
 	}
 	
@@ -43,7 +43,7 @@ OnBatteryNotify : void
 	}
 	
 	if ! disable_battery_notify {
-		if basewarename == 'SSP' { //いまのところSSPのみ\C対応のためはやめに通知可能
+		if basewarename == 'SSP' { //目前仅SSP支持\C，可提前通知
 			iconname = _iconname_new
 			SHIORI3FW.SetDelayEvent('OnBatteryDelayEvent',1)
 		}
@@ -55,7 +55,7 @@ OnBatteryNotify : void
 	}
 }
 
-//遅延発生イベント
+//延迟发生事件
 BatteryTag
 {
 	_t = "\![set,trayicon,%(iconname),"
