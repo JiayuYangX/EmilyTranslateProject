@@ -1,11 +1,14 @@
-Emily/Phase4.5
+Emily/Phase4.5 汉化版
 Copyright (C) 2004- Emily/Phase4.5 Project.
 
 http://ssp.shillest.net/
 
-Emily/Phase4.5（ghost/emily4文件夹以下）基于
+Emily/Phase4.5 汉化版（ghost/emily4_zh文件夹以下）基于
 https://creativecommons.org/licenses/by-nc/4.0/deed.ja
 及以上的条件进行分发。
+
+本汉化版由Jiayu制作，项目地址为：
+https://github.com/JiayuYangX/EmilyTranslateProject
 
 ------------------------------------------
 

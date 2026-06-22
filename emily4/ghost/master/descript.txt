@@ -2,14 +2,14 @@ charset,UTF-8
 
 type,ghost
 
-name,Emily/Phase4.5
+name,Emily/Phase4.5 汉化版
 sakura.name,Emily
 kero.name,Teddy
 char2.name,Emilio
 
 balloon,emily4
 
-id,Emily/Phase4.5
+id,Emily/Phase4.5 汉化版
 title,Slapstick Beauty
 
 char2.seriko.defaultsurface,200

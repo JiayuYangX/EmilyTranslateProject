@@ -1,6 +1,6 @@
 charset,ASCII
 type,ghost
 name,Emily/Phase4
-directory,emily4
+directory,emily4_zh
 balloon.directory,emily4
 balloon.source.directory,balloon
