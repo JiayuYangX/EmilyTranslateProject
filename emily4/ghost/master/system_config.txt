@@ -1,17 +1,16 @@
 //------------------------------------------------------------------------------
-//システム辞書
+//系统词典
 //------------------------------------------------------------------------------
-dic, yaya_config.txt		// YAYA:設定辞書。必ず最初に指定すること。
+dic, yaya_config.txt		// YAYA:设置词典。必须第一个指定。
 
 dic, system/yaya_shiori3.dic, UTF-8
 dic, system/yaya_optional.dic, UTF-8
 //dic, system/yaya_compatible.dic, UTF-8
 
 //------------------------------------------------------------------------------
-//実行ログ
-//実行ログをayame.logに記録します。開発時には記録しておいたほうが良いです。
+//运行日志
+//将运行日志记录到ayame.log。开发时建议开启记录。
 //------------------------------------------------------------------------------
 // log, ayame.log	
-ignoreiolog, ID: OnSecondChange //OnSecondChange無視
-ignoreiolog, ID: OnMouse        //OnMouse系無視
-
+ignoreiolog, ID: OnSecondChange //忽略 OnSecondChange
+ignoreiolog, ID: OnMouse        //忽略 OnMouse 系列

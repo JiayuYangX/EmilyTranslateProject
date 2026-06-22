@@ -15,7 +15,7 @@ title,Slapstick Beauty
 char2.seriko.defaultsurface,200
 
 name.allowoverride,0
-install.accept,Emily,エミリ,えみりぃ
+install.accept,Emily,艾米莉
 
 craftmanurl,http://ssp.shillest.net/
 craftman,[SSPBT/GL03B]Emily Development Team
