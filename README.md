@@ -1,6 +1,6 @@
 # Emily/Phase4.5 官方人格完全汉化
 
-伪春菜默认人格 **Emily/Phase4.5** 的汉化工程，支持在线更新  
+SSP 伪春菜默认人格（Ghost） **Emily/Phase4.5** 的汉化工程，支持在线更新。  
 **汉化作者**：Jiayu Yang  
 **原始项目作者**：Dark Angel
 
