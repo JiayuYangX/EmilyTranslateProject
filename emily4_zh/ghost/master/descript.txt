@@ -17,8 +17,8 @@ char2.seriko.defaultsurface,200
 name.allowoverride,0
 install.accept,Emily,艾米莉
 
-craftmanurl,http://ssp.shillest.net/
-craftman,[SSPBT/GL03B]Emily Development Team
+craftmanurl,https://github.com/JiayuYangX/EmilyTranslateProject
+craftman,[SSPBT/GL03B]Emily Development Team / 汉化：Jiayu
 
 updateurl,https://jiayuyangx.github.io/EmilyTranslateProject/
 
