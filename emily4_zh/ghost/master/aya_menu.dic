@@ -1010,7 +1010,7 @@ CreateDispGhostList
 		if _ar[0] == SHIORI3FW.GhostName {
 			found_myself = _i+1
 		}
-		_tx += '\n·' + SHIORI3FW.MakeJustText(_ar[0],_len) + ' '
+		_tx += '\n・' + SHIORI3FW.MakeJustText(_ar[0],_len) + ' '
 		if ! _argv[0] {
 			_ut = TOINT(_ar[4])
 			_tx += STRFORM("$6d:$02d",_ut/60,_ut%60) + ' '

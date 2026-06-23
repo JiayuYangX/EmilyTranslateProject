@@ -383,7 +383,7 @@ HELP_display_menu_limit_chars : array
 	"\u\s[10]\0\s[0]可以在菜单显示时省略长名字人格桑之类的名字。\w9\w9\1可以防止菜单横向爆开。\e"
 
 	//标题(不需要时可为空)
-	"人格·对话框菜单最大字数"
+	"人格・对话框菜单最大字数"
 }
 HELP_display_history_limit : array
 {
@@ -395,7 +395,7 @@ HELP_display_history_limit : array
 }
 HDispAlphaCharacter
 {
-	"\h\s[0]\u\s[10]可以半透明显示角色\w5·对话框\w5·日历。\w9\w9\h\s[5]能隐隐约约看到背后的窗口，\w5工作的时候也不会碍事，完美！\w9\w9\u\s[11]\n\n不过鼠标的响应还是会到我们身上呢。\w9\w9\h\s[4]\n\n啊\w5…\w5…"
+	"\h\s[0]\u\s[10]可以半透明显示角色\w5・对话框\w5・日历。\w9\w9\h\s[5]能隐隐约约看到背后的窗口，\w5工作的时候也不会碍事，完美！\w9\w9\u\s[11]\n\n不过鼠标的响应还是会到我们身上呢。\w9\w9\h\s[4]\n\n啊\w5…\w5…"
 }
 HELP_display_alpha_character : array
 {
@@ -834,7 +834,7 @@ HELP_international_balloon_font : array
 HELP_developer_directory_drop : array
 {
 	//内容(脚本)
-	"\h\s[0]\u\s[10]纯粹面向开发者桑的功能。\w9\n一般拖放目录只会通知人格桑说被拖放了，\w5勾选后就能生成NAR和updates2.dau。\w9\w9\h\s[5]一定也能做烤红薯了吧！\w9\w9\u\s[11]\n\n才\w5·\w5不\w5·\w5会。"
+	"\h\s[0]\u\s[10]纯粹面向开发者桑的功能。\w9\n一般拖放目录只会通知人格桑说被拖放了，\w5勾选后就能生成NAR和updates2.dau。\w9\w9\h\s[5]一定也能做烤红薯了吧！\w9\w9\u\s[11]\n\n才\w5・\w5不\w5・\w5会。"
 
 	//标题(不需要时可为空)
 	"" //拖放目录时生成更新文件或NAR

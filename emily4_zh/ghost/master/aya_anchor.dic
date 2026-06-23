@@ -169,7 +169,7 @@ OnAnchorWordReturn
 	'\0\n[half]' + メニュー('返回','OpenMenu')
 }
 
-//解说·「返回」
+//解说・「返回」
 アンカー単語解説
 {
 	//_argv[0] = 单词
