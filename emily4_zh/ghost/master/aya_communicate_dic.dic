@@ -9,7 +9,7 @@ OnDicCommunicate_所長たん1
 	if _argc == 0 { //起动
 		"\p2\s[-1]\h\s[-1]\u\s[-1]"
 		
-		_script = "\u\s[-1]\h\s[-1]\_q【BugTroll事务所　第一开发室】\_q\_w[1000]\e"
+		_script = "\u\s[-1]\h\s[-1]\_q【BUGTRAQ事务所　第一开发室】\_q\_w[1000]\e"
 		
 		StartCommunicateScenario("所長たん",_script)
 		RegisterOneTimeCommunicate("所長たん","第一開発室","OnDicCommunicate_所長たん1(1)")
