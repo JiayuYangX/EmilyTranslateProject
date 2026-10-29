@@ -30,3 +30,4 @@ icon.minimize,icon_minimize.ico
 shiori,yaya.dll
 shiori.version,SHIORI/3.0
 
+x-ssp.run_delete_txt,1

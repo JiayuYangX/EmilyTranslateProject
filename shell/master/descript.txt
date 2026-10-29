@@ -11,14 +11,23 @@ shiori.logo.y,0
 sakura.balloon.offsetx,7
 sakura.balloon.offsety,-40
 sakura.seriko.alignmenttodesktop,bottom
+sakura.icon.frame.color.r,255
+sakura.icon.frame.color.g,0
+sakura.icon.frame.color.b,255
 
 kero.balloon.offsetx,10
 kero.balloon.offsety,10
 kero.seriko.alignmenttodesktop,free
+kero.icon.frame.color.r,255
+kero.icon.frame.color.g,151
+kero.icon.frame.color.b,0
 
 char2.balloon.offsetx,40
 char2.balloon.offsety,125
 char2.seriko.alignmenttodesktop,bottom
+char2.icon.frame.color.r,0
+char2.icon.frame.color.g,0
+char2.icon.frame.color.b,255
 
 char3.seriko.alignmenttodesktop,bottom
 
